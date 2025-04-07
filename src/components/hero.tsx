@@ -1,17 +1,28 @@
 export default function Hero() {
   return (
-    <section className="bg-unroot-purple pt-32 pb-16">
-      <div className="unroot-container">
-        <p className="text-white/80 text-center mb-6 text-lg">
-          Dont miss out on revenue by having a bad website
-        </p>
-        <h1 className="text-center text-white font-serif text-4xl md:text-5xl lg:text-6xl max-w-3xl mx-auto leading-tight mb-8">
-          Standout websites that boost your brand's credibility
-        </h1>
-        <p className="text-white/80 text-center mb-6 text-lg">
-          Join the other businesses accelerating their success with cutting-edge designs
+    <section className="bg-white pt-32 pb-4">
+      <div className="fusion-container">
+        <div className="flex flex-col items-center justify-center mb-8">
+          {/* Logo display - using image instead of text */}
+          <div className="w-32 md:w-48 mb-6">
+            <img
+              src="/fusion-negro.png"
+              alt="Fusion Diseño Logo"
+              className="w-full h-auto"
+            />
+          </div>
+        </div>
+
+        <h2 className="text-center text-black font-serif text-4xl md:text-5xl lg:text-6xl max-w-3xl mx-auto leading-tight mb-8">
+          Transformando espacios con diseño interior exclusivo
+        </h2>
+
+        <p className="text-black/80 text-center mb-12 text-lg max-w-2xl mx-auto">
+          Creando ambientes únicos que reflejan su personalidad y estilo de
+          vida. Fusionamos funcionalidad y estética para crear espacios que
+          inspiran.
         </p>
       </div>
     </section>
-  )
+  );
 }

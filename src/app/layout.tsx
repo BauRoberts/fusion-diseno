@@ -5,20 +5,22 @@ import "./globals.css";
 const figtree = Figtree({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-figtree"
+  variable: "--font-figtree",
 });
 
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: ["400"], // Updated weight to include only 400
-  variable: "--font-instrument"
+  variable: "--font-instrument",
 });
 
 export const metadata: Metadata = {
-  title: "Unroot Design - Standout websites that boost your brand's credibility",
-  description: "Unlimited design and Webflow support at a flat monthly rate",
+  title: "Fusion Diseño - Transformando espacios con diseño interior exclusivo",
+  description: "Transformando espacios con diseño interior exclusivo",
+  icons: {
+    icon: "/favicon.png", // This references your file in the public directory
+  },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,7 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${figtree.variable} ${instrumentSerif.variable} font-sans`}>
+      <body
+        className={`${figtree.variable} ${instrumentSerif.variable} font-sans`}
+      >
         {children}
       </body>
     </html>
