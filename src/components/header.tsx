@@ -86,6 +86,16 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center">
+            {/* Botón de ecommerce */}
+            <Link href="/shop" className="mr-2">
+              <Button
+                variant="outline"
+                className="border-black text-black hover:bg-black/5 rounded-full text-xs px-4 py-1 font-medium hidden md:inline-flex"
+              >
+                compra lo que usamos
+              </Button>
+            </Link>
+
             <Link href="/call">
               <Button
                 variant="secondary"
@@ -129,6 +139,14 @@ export default function Header() {
           } py-3 px-4 border-t border-black/10 shadow-lg`}
         >
           <nav className="flex flex-col space-y-3">
+            {/* Botón de ecommerce en móvil */}
+            <Link
+              href="/shop"
+              className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              compra lo que usamos
+            </Link>
             <Link
               href="/#benefits"
               className="text-black hover:text-black/80 transition-colors duration-200 text-xs  tracking-wide py-2"
