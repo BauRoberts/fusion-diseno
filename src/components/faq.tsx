@@ -43,7 +43,7 @@ export default function FAQ() {
     <section id="faq" className="bg-white py-24">
       <div className="fusion-container max-w-3xl mx-auto">
         <div className="mb-16 text-center">
-          <h2 className="font-serif text-4xl md:text-5xl mb-6">
+          <h2 className="font-sans text-4xl md:text-5xl mb-6">
             Preguntas frecuentes
           </h2>
           <p className="text-black/70 max-w-xl mx-auto">
@@ -60,7 +60,7 @@ export default function FAQ() {
                   value={faq.id}
                   className="border-b border-black/10 py-2"
                 >
-                  <AccordionTrigger className="text-left font-serif text-lg hover:no-underline py-4">
+                  <AccordionTrigger className="text-left  text-lg hover:no-underline py-4">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-black/80 leading-relaxed pb-6">

@@ -71,13 +71,36 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground font-sans font-normal;
   }
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply font-serif;
+  
+  /* Typography as per client's new requirements */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-bold; /* Figtree Bold for titles */
+  }
+  
+  h1 {
+    @apply font-extrabold; /* Figtree ExtraBold for main titles */
+  }
+  
+  /* Short text/isolated sentences with IBM Plex Mono */
+  .text-short {
+    @apply font-mono font-normal; /* IBM Plex Mono for short text */
+  }
+  
+  /* For button text */
+  button, .btn {
+    @apply font-sans font-light; /* Figtree Light for buttons */
+  }
+  
+  /* For regular text */
+  p, .text {
+    @apply font-sans font-normal; /* Figtree Regular for normal text */
+  }
+  
+  /* For medium emphasis text */
+  .text-medium {
+    @apply font-sans font-medium; /* Figtree Medium for emphasized text */
   }
 }
 
@@ -92,14 +115,28 @@
   }
 
   .navbar-button {
-    @apply bg-white text-black rounded-md px-4 py-2 font-medium;
+    @apply bg-white text-black rounded-md px-4 py-2 font-light; /* Updated for Figtree Light */
   }
 
   .btn-primary {
-    @apply bg-black text-white hover:bg-black/90 transition-colors duration-200;
+    @apply bg-black text-white hover:bg-black/90 transition-colors duration-200 font-light; /* Updated for Figtree Light */
   }
 
   .btn-secondary {
-    @apply bg-white text-black hover:bg-white/90 transition-colors duration-200;
+    @apply bg-white text-black hover:bg-white/90 transition-colors duration-200 font-light; /* Updated for Figtree Light */
+  }
+  
+  /* For IBM Plex Mono short text/isolated sentences */
+  .text-mono {
+    @apply font-mono;
+  }
+  
+  /* For text blocks/long text */
+  .text-long {
+    @apply font-sans font-normal; /* Figtree Regular */
+  }
+  
+  .text-long-medium {
+    @apply font-sans font-medium; /* Figtree Medium */
   }
 }

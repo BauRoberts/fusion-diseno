@@ -90,7 +90,7 @@ export default function Header() {
             <Link href="/shop" className="mr-2">
               <Button
                 variant="outline"
-                className="border-black text-black hover:bg-black/5 rounded-full text-xs px-4 py-1 font-medium hidden md:inline-flex"
+                className="border-black text-black hover:bg-black/5 rounded-full text-xs px-4 py-1 medium hidden md:inline-flex"
               >
                 compra lo que usamos
               </Button>
@@ -99,7 +99,7 @@ export default function Header() {
             <Link href="/call">
               <Button
                 variant="secondary"
-                className="bg-black text-white hover:bg-black/90 rounded-full text-xs px-4 py-1 font-medium"
+                className="bg-black text-white hover:bg-black/90 rounded-full text-xs px-4 py-1 medium"
               >
                 contratanos
               </Button>

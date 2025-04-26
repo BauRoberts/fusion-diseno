@@ -6,44 +6,63 @@ import { useState, useEffect, useRef } from "react";
 
 const services = [
   {
-    id: "diseno-interiores",
-    title: "Servicios de Diseño de Interiores",
+    id: "servicio-interiorismo",
+    title: "Servicio de Interiorismo",
     features: [
-      "Diseños personalizados residenciales y comerciales",
-      "Planificación y optimización de espacios",
-      "Selección de materiales y acabados exclusivos",
+      "Transformación integral de espacios residenciales y comerciales",
+      "Optimización de distribución y funcionalidad adaptada a tus necesidades",
+      "Proceso estructurado en etapas de Proyecto y Ejecución",
     ],
     icon: "home-decor",
     cta: "Reservar Consulta",
   },
   {
-    id: "muebles-personalizados",
-    title: "Muebles y Decoración a Medida",
+    id: "servicio-asesorias",
+    title: "Servicio de Asesorías",
     features: [
-      "Muebles fabricados por encargo",
-      "Ebanistería y muebles empotrados personalizados",
-      "Elementos decorativos únicos",
+      "Resolución de dudas puntuales sobre diseño y decoración",
+      "Selección de productos, materiales y detalles decorativos",
+      "Formato breve, práctico y flexible (presencial o a distancia)",
     ],
     icon: "furniture",
-    cta: "Solicitar Presupuesto",
+    cta: "Solicitar Asesoría",
+  },
+  {
+    id: "servicio-fusion",
+    title: "Servicio Fusion",
+    features: [
+      "Desarrollo integral de marca y espacio físico",
+      "Creación de identidad visual (naming, logo, paleta de colores)",
+      "Diseño y montaje de espacios alineados con tu identidad de marca",
+    ],
+    icon: "design",
+    cta: "Explorar Servicio",
   },
 ];
 
 const serviceTypes = [
-  "Diseño Residencial",
-  "Espacios Comerciales",
-  "Remodelaciones",
-  "Planificación Espacial",
-  "Muebles a Medida",
-  "Cocinas y Baños",
-  "Diseño de Iluminación",
-  "Asesoría de Color",
+  // Servicio de Interiorismo
+  "Casas y Departamentos",
+  "Oficinas y Espacios de Trabajo",
+  "Locales Comerciales",
+  "Cafés y Restaurantes",
+  "Remodelaciones Integrales",
+  "Proyectos desde Obra",
+  
+  // Aspectos técnicos
+  "Relevamiento y Anteproyecto",
   "Selección de Materiales",
-  "Curaduría de Arte",
-  "Diseño Sostenible",
-  "Home Staging",
-  "Visualización 3D",
-  "Sourcing de Mobiliario",
+  "Planos Técnicos",
+  "Renders 3D",
+  "Mobiliario a Medida",
+  "Coordinación de Proveedores",
+  "Supervisión de Obra",
+  
+  // Servicio Fusion
+  "Diseño de Identidad Visual",
+  "Branding para Espacios",
+  "Experiencia de Marca Integral",
+  "Piezas Gráficas Corporativas",
 ];
 
 export default function Services() {
@@ -129,55 +148,80 @@ export default function Services() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div>
-          <div className="mb-10">
-            <span className="inline-block text-sm font-medium mb-2">
-              NUESTROS SERVICIOS
-            </span>
-            <h2 className="font-serif text-3xl md:text-4xl">
-              Un equipo apasionado de expertos en diseño que{" "}
-              <em className="not-italic">da vida a tu visión</em>
-            </h2>
-          </div>
+        <div className="mb-10">
+          <span className="inline-block text-sm medium mb-2">
+            NUESTROS SERVICIOS
+          </span>
+          <h2 className="font-sans text-3xl md:text-4xl">
+            Soluciones de diseño personalizadas que <em className="not-italic">transforman cada espacio</em>
+          </h2>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {services.map((service) => (
-              <div
-                key={service.id}
-                className="rounded-lg p-8 relative overflow-hidden"
-                style={{
-                  background:
-                    "linear-gradient(145deg, #1a1a1a 0%, #000000 100%)",
-                }}
-              >
-                <h3 className="font-serif text-3xl mb-8 relative z-10 text-white tracking-wide">
-                  {service.title}
-                </h3>
-                <ul className="space-y-4 mb-10 relative z-10">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center text-white">
-                      <div className="w-1.5 h-1.5 bg-white rounded-full mr-2.5" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
+          {/* Primera tarjeta - Servicio de Interiorismo (ocupa todo el ancho) */}
+          <div
+            className="col-span-1 md:col-span-6 rounded-lg p-8 relative overflow-hidden"
+            style={{
+              background: "linear-gradient(145deg, #1a1a1a 0%, #000000 100%)",
+            }}
+          >
+            <h3 className="text-3xl mb-8 relative z-10 text-white tracking-wide">
+              {services[0].title}
+            </h3>
+            <ul className="space-y-4 mb-10 relative z-10">
+              {services[0].features.map((feature) => (
+                <li key={feature} className="flex items-center text-white">
+                  <div className="w-1.5 h-1.5 bg-white rounded-full mr-2.5" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
 
-                <Link href="/llamada" className="relative z-10 inline-block">
-                  <div className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white border border-white/30 hover:bg-white hover:text-black transition-colors duration-300 rounded-sm tracking-wider">
-                    {service.cta}
-                  </div>
-                </Link>
+            <Link href="/llamada" className="relative z-10 inline-block">
+              <div className="inline-flex items-center justify-center px-6 py-2.5 text-sm medium text-white border border-white/30 hover:bg-white hover:text-black transition-colors duration-300 rounded-sm tracking-wider">
+                {services[0].cta}
               </div>
-            ))}
+            </Link>
           </div>
+
+          {/* Tarjetas 2 y 3 (cada una ocupa la mitad del ancho) */}
+          {services.slice(1).map((service) => (
+            <div
+              key={service.id}
+              className="col-span-1 md:col-span-3 rounded-lg p-8 relative overflow-hidden"
+              style={{
+                background: "linear-gradient(145deg, #1a1a1a 0%, #000000 100%)",
+              }}
+            >
+              <h3 className="text-3xl mb-8 relative z-10 text-white tracking-wide">
+                {service.title}
+              </h3>
+              <ul className="space-y-4 mb-10 relative z-10">
+                {service.features.map((feature) => (
+                  <li key={feature} className="flex items-center text-white">
+                    <div className="w-1.5 h-1.5 bg-white rounded-full mr-2.5" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <Link href="/llamada" className="relative z-10 inline-block">
+                <div className="inline-flex items-center justify-center px-6 py-2.5 text-sm medium text-white border border-white/30 hover:bg-white hover:text-black transition-colors duration-300 rounded-sm tracking-wider">
+                  {service.cta}
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
         </div>
 
         <div className="bg-gray-50 bg-opacity-90 rounded-lg p-10 mt-20 relative overflow-hidden">
-          <span className="inline-block text-sm font-medium mb-4 relative z-10">
+          <span className="inline-block text-sm medium mb-4 relative z-10">
             Nuestra experiencia transformando espacios
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl mb-6 relative z-10">
-            Diseño de interiores, muebles a medida, <br />
-            elementos decorativos y más
+          <h2 className="text-3xl md:text-4xl mb-6 relative z-10">
+            Desde la conceptualización hasta la materialización, <br />
+            nos involucramos en todo el proceso
           </h2>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-2 mt-8 relative z-10">

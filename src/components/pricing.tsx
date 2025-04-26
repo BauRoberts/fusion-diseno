@@ -42,7 +42,7 @@ export default function Pricing() {
     <section id="servicios" className="bg-white py-24">
       <div className="fusion-container">
         <div className="flex flex-col items-center justify-center mb-16">
-          <h2 className="text-center text-black font-serif text-4xl md:text-5xl max-w-2xl mx-auto leading-tight mb-8">
+          <h2 className="font-sans text-center text-black  text-4xl md:text-5xl max-w-2xl mx-auto leading-tight mb-8">
             Nuestros servicios de diseño
           </h2>
 
@@ -55,13 +55,13 @@ export default function Pricing() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {pricingPlans.map((plan) => (
             <div key={plan.id} className="border border-black/10 p-10 bg-white">
-              <h3 className="font-serif text-2xl md:text-3xl mb-4">
+              <h3 className=" text-2xl md:text-3xl mb-4">
                 {plan.title}
               </h3>
               <p className="text-black/70 mb-8">{plan.description}</p>
 
               <div className="mb-10">
-                <p className="text-sm uppercase tracking-wider text-black/50 font-medium mb-4">
+                <p className="text-sm uppercase tracking-wider text-black/50 medium mb-4">
                   Incluye
                 </p>
                 <ul className="space-y-3">

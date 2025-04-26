@@ -150,7 +150,7 @@ export default function FeaturedWork() {
               {/* Right side: custom color background with project info */}
               <div className="w-full md:w-2/5 bg-[#B0AE9F] text-white p-8 md:p-12 h-96 md:h-[600px] lg:h-[680px] flex flex-col justify-center">
                 <div className="max-w-md">
-                  <h3 className="text-3xl md:text-5xl font-serif mb-4 md:mb-8">
+                  <h3 className="text-3xl md:text-5xl font-sans  mb-4 md:mb-8">
                     {project.name}
                   </h3>
 

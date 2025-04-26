@@ -51,7 +51,7 @@ export default function DesignShowcase() {
   return (
     <section className="bg-white py-20">
       <div className="unroot-container">
-        <h2 className="text-center font-serif text-3xl md:text-4xl mb-12">
+        <h2 className="text-center font-sans  text-3xl md:text-4xl mb-12">
           Amamos lo que usamos
         </h2>
 
@@ -73,7 +73,7 @@ export default function DesignShowcase() {
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 flex items-center justify-center transition-all duration-300">
                   <Link
                     href={item.link}
-                    className="bg-white text-black px-4 py-2 rounded-md font-medium text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0"
+                    className="bg-white text-black px-4 py-2 rounded-md medium text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0"
                   >
                     Comprar ahora
                   </Link>

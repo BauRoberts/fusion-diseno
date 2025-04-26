@@ -16,8 +16,7 @@ export default function Home() {
       <FeaturedWork />
       <DesignShowcase />
       <Benefits />
-      <Services />
-      <Pricing />
+      <Services />      
       <FAQ />
       <Footer />
     </main>

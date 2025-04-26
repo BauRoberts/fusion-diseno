@@ -4,7 +4,7 @@ export default function Hero() {
       <div className="fusion-container">
         <div className="flex flex-col items-center justify-center mb-8">
           {/* Logo display - using image instead of text */}
-          <div className="w-32 md:w-48 mb-6">
+          <div className="w-38 md:w-48 mb-6">
             <img
               src="/fusion-negro.png"
               alt="Fusion Diseño Logo"
@@ -13,15 +13,13 @@ export default function Hero() {
           </div>
         </div>
 
-        <h2 className="text-center text-black font-serif text-4xl md:text-5xl lg:text-6xl max-w-3xl mx-auto leading-tight mb-8">
-          Transformando espacios con diseño interior exclusivo
+        <h2 className="text-center text-black sans extrabold text-4xl md:text-5xl lg:text-6xl max-w-4xl mx-auto leading-tight mb-8">
+          Espacios que transforman, diseños que perduran
         </h2>
 
         <p className="text-black/80 text-center mb-12 text-lg max-w-2xl mx-auto">
-          Creando ambientes únicos que reflejan su personalidad y estilo de
-          vida. Fusionamos funcionalidad y estética para crear espacios que
-          inspiran.
-        </p>
+          Fusionamos arquitectura y diseño gráfico para crear ambientes únicos que reflejan tu esencia. Cada proyecto es una historia donde la funcionalidad se encuentra con la belleza.
+        </p>  
       </div>
     </section>
   );

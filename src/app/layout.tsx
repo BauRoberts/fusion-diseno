@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Figtree, Instrument_Serif } from "next/font/google";
+import { Figtree, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
 const figtree = Figtree({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "700", "800"], // 300=Light, 400=Regular, 500=Medium, 700=Bold, 800=ExtraBold
   variable: "--font-figtree",
 });
 
-const instrumentSerif = Instrument_Serif({
+const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
-  weight: ["400"], // Updated weight to include only 400
-  variable: "--font-instrument",
+  weight: ["300", "400", "500", "600"], // Including various weights for flexibility
+  variable: "--font-ibm-plex",
 });
 
 export const metadata: Metadata = {
@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${figtree.variable} ${instrumentSerif.variable} font-sans`}
+        className={`${figtree.variable} ${ibmPlexMono.variable} font-sans`}
       >
         {children}
       </body>

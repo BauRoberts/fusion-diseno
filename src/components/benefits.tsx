@@ -1,29 +1,30 @@
 "use client";
 import { CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 
 const benefits = [
   {
     id: "benefit-1",
-    title: "Espacios Personalizados",
-    description: "Diseños únicos adaptados a su personalidad y estilo de vida.",
+    title: "Diseño con Propósito",
+    description: "Creamos espacios que no solo son estéticamente atractivos, sino funcionales y adaptados a tu forma de vivir y trabajar.",
   },
   {
     id: "benefit-2",
-    title: "Ejecución Impecable",
+    title: "Equipo Multidisciplinario",
     description:
-      "Desde el concepto hasta la realización, entregamos proyectos de calidad en el plazo acordado.",
+      "La fusión de diseño gráfico y arquitectura nos permite ofrecer una visión integral que abarca desde la identidad visual hasta los espacios físicos.",
   },
   {
     id: "benefit-3",
-    title: "Proceso Transparente",
+    title: "Compromiso con los Detalles",
     description:
-      "Comunicación clara y presupuestos detallados durante todo el proceso de diseño.",
+      "Nos detenemos en cada detalle y buscamos la mejor solución para cada proyecto, con un proceso transparente y comunicación constante.",
   },
   {
     id: "benefit-4",
-    title: "Experiencia Comprobada",
+    title: "Fabricación Propia",
     description:
-      "Años transformando espacios que reflejan la esencia de nuestros clientes.",
+      "Contamos con talleres para la fabricación de mobiliario a medida, permitiéndonos personalizar cada diseño y ofrecer respuestas rápidas y eficientes.",
   },
 ];
 
@@ -31,31 +32,25 @@ export default function Benefits() {
   return (
     <section
       id="benefits"
-      className="py-24 bg-[#0000] relative overflow-hidden"
+      className="py-24 bg-white relative overflow-hidden"
     >
-      {/* Fondo con patrón de logo usando CSS */}
-      <style jsx>{`
-        .logo-pattern {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          background-image: url("/fusion-negro.png");
-          background-size: 40px auto;
-          background-repeat: space;
-          opacity: 0.1;
-          pointer-events: none;
-        }
-      `}</style>
-
-      <div className="logo-pattern"></div>
+      {/* Imagen de fondo */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <Image
+          src="/benefits-bg.png"
+          alt="Interior Design Illustration"
+          layout="fill"
+          objectFit="cover"
+          className="opacity-15"
+          priority
+        />
+      </div>
 
       <div className="w-full max-w-7xl mx-auto px-6 relative z-10">
-        <h2 className="text-center font-serif text-4xl md:text-5xl lg:text-6xl mb-12 text-black">
-          Transformamos espacios,
+        <h2 className="text-center text-4xl md:text-5xl lg:text-6xl mb-12 text-black">
+          Diseñamos experiencias,
           <span className="block mt-2">
-            diseños que inspiran{" "}
-            <span className="line-through text-gray-500">no limitan</span>
+            no solo espacios <span className="line-through text-gray-500">comunes</span>
           </span>
         </h2>
 
@@ -63,15 +58,15 @@ export default function Benefits() {
           {benefits.map((benefit) => (
             <div
               key={benefit.id}
-              className="bg-white p-8 rounded-lg text-black hover:shadow-lg transition-shadow duration-300"
+              className="bg-white bg-opacity-90 p-8 rounded-lg text-black hover:shadow-lg transition-shadow duration-300 border border-gray-100"
             >
               <div className="mb-6">
-                <CheckCircle2 className="text-black h-6 w-6" />
+                <CheckCircle2 className="text-gray-500 h-6 w-6" />
               </div>
-              <p className="font-serif text-4xl font-medium mb-4">
+              <p className="text-3xl font-medium mb-4 text-black">
                 {benefit.title}
               </p>
-              <p className="text-gray-700 text-2x1">{benefit.description}</p>
+              <p className="text-gray-700">{benefit.description}</p>
             </div>
           ))}
         </div>
