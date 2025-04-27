@@ -36,7 +36,7 @@ export default function CallPage() {
                 p(api, arguments);
               };
               const namespace = ar[1];
-              api.q = api.q || [];
+              api.q = api.q || ([] as any[]);
               if (typeof namespace === "string") {
                 cal.ns[namespace] = cal.ns[namespace] || api;
                 p(cal.ns[namespace], ar);
@@ -81,30 +81,26 @@ export default function CallPage() {
   return (
     <main>
       <Header />
-      <section className="bg-unroot-purple pt-32 pb-64">
-        <div className="unroot-container max-w-4xl mx-auto">
-          <h1 className="text-center text-white font-serif text-5xl md:text-6xl max-w-3xl mx-auto leading-tight mb-14">
-            Agenda una consulta para tu proyecto arquitectónico
-          </h1>
-
-          <div className="bg-white rounded-lg p-10 shadow-lg">
-            <div className="flex items-center space-x-4 mb-6">
-              <div className="w-12 h-12 rounded-full bg-unroot-purple/20 flex items-center justify-center">
-                <span className="text-unroot-purple font-medium">BR</span>
+      <section className="bg-unroot-purple pt-32 md:pt-32 pb-16 md:pb-64">
+        <div className="unroot-container max-w-4xl mx-auto px-4 md:px-0">
+          <div className="bg-white rounded-lg p-4 md:p-6 shadow-lg">
+            <div className="flex items-center space-x-4 mb-4 md:mb-6">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-unroot-purple/20 flex items-center justify-center">
+                <span className="text-unroot-purple font-medium text-sm md:text-base">BR</span>
               </div>
               <div>
-                <h2 className="font-medium text-lg">Bautista Roberts</h2>
-                <p className="text-gray-600">
+                <h2 className="font-medium text-base md:text-lg">Bautista Roberts</h2>
+                <p className="text-gray-600 text-sm md:text-base">
                   Consulta con el Arquitecto Principal
                 </p>
               </div>
             </div>
 
             <div className="border-t border-gray-100 pt-4 pb-2">
-              <h3 className="font-medium mb-3">
+              <h3 className="font-medium mb-2 md:mb-3 text-sm md:text-base">
                 Reunión de descubrimiento. Durante la llamada:
               </h3>
-              <ul className="space-y-2 mb-6">
+              <ul className="space-y-1 md:space-y-2 mb-4 md:mb-6 text-sm md:text-base">
                 <li className="flex items-start">
                   <span className="text-gray-400 mr-2">✓</span>
                   <span>
@@ -127,7 +123,7 @@ export default function CallPage() {
                 </li>
               </ul>
 
-              <div className="flex items-center text-gray-500 mb-4">
+              <div className="flex items-center text-gray-500 mb-4 text-sm md:text-base">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -150,7 +146,7 @@ export default function CallPage() {
               <div
                 id="my-cal-inline"
                 className="rounded-md w-full h-auto"
-                style={{ minHeight: "800px" }}
+                style={{ minHeight: "min(800px, 100vh - 300px)" }}
               ></div>
             </div>
           </div>

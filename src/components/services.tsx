@@ -177,7 +177,7 @@ export default function Services() {
             ))}
           </ul>
 
-          <Link href="/llamada" className="relative z-10 inline-block">
+          <Link href="/call" className="relative z-10 inline-block">
             <div className="inline-flex items-center justify-center px-6 py-2.5 text-sm medium text-white border border-white/30 hover:bg-white hover:text-black transition-colors duration-300 rounded-sm tracking-wider">
               {services[0].cta}
             </div>
@@ -205,7 +205,7 @@ export default function Services() {
               ))}
             </ul>
 
-            <Link href="/llamada" className="relative z-10 inline-block">
+            <Link href="/call" className="relative z-10 inline-block">
               <div className="inline-flex items-center justify-center px-6 py-2.5 text-sm medium text-white border border-white/30 hover:bg-white hover:text-black transition-colors duration-300 rounded-sm tracking-wider">
                 {service.cta}
               </div>
