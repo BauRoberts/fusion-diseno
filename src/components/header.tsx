@@ -119,15 +119,14 @@ export default function Header() {
             >
               que hacemos
             </a>
-            <a
-              href="/#design-showcase"
+            <Link
+              href="/proyecto"
               className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
-              onClick={(e) => handleSmoothScroll(e, '#design-showcase')}
             >
               trabajos
-            </a>
+            </Link>
             <a
-              href="/#services"
+              href="/proyecto"
               className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
               onClick={(e) => handleSmoothScroll(e, '#services')}
             >
@@ -215,15 +214,13 @@ export default function Header() {
             >
               que hacemos
             </a>
-            <a
-              href="/#design-showcase"
+            <Link
+              href="/proyecto"
               className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
-              onClick={(e) => {
-                handleSmoothScroll(e, '#design-showcase');
-              }}
+              onClick={() => setMobileMenuOpen(false)}
             >
               trabajos
-            </a>
+            </Link>
             <a
               href="/#services"
               className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
