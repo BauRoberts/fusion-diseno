@@ -19,10 +19,66 @@ export default function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
+    
+    // Manejar navegación con hash al cargar la página
+    const handleHashNavigation = () => {
+      const hash = window.location.hash;
+      if (hash && hash.startsWith('#')) {
+        setTimeout(() => {
+          const targetSection = document.querySelector(hash);
+          if (targetSection) {
+            const headerHeight = 80;
+            const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 100); // Pequeño delay para asegurar que el DOM está listo
+      }
+    };
+    
+    // Ejecutar cuando se carga la página
+    handleHashNavigation();
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  
+  // Función para manejar el scroll suave a las secciones
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    // Solo procesar enlaces internos que empiezan con #
+    if (!targetId.startsWith('#')) return;
+    
+    e.preventDefault();
+    
+    // Verificar si estamos en la página principal
+    const isHomePage = window.location.pathname === '/' || window.location.pathname === '';
+    
+    if (!isHomePage) {
+      // Si no estamos en la página principal, redirigir a la página principal con el hash
+      window.location.href = '/' + targetId;
+      return;
+    }
+    
+    // Si estamos en la página principal, hacer scroll suave
+    const targetSection = document.querySelector(targetId);
+    
+    if (targetSection) {
+      // Cerrar el menú móvil si está abierto
+      if (mobileMenuOpen) setMobileMenuOpen(false);
+      
+      // Calcular la posición para el scroll con un pequeño offset
+      const headerHeight = 80; // altura aproximada del header
+      const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+      
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <header className="fixed w-full top-0 z-50 transition-all duration-300">
@@ -53,48 +109,49 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6 absolute left-1/2 transform -translate-x-1/2 transition-all duration-300">
-            <Link
+            <Link href="/nosotras" className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2">
+              nosotras
+            </Link>
+            <a
               href="/#benefits"
               className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
-            >
-              beneficios
-            </Link>
-            <Link
-              href="/#wedo"
-              className="text-black hover:text-black/80 transition-colors duration-200 text-xs  tracking-wide py-2"
+              onClick={(e) => handleSmoothScroll(e, '#benefits')}
             >
               que hacemos
-            </Link>
-            <Link
-              href="/#recent-work"
-              className="text-black hover:text-black/80 transition-colors duration-200 text-xs  tracking-wide py-2"
+            </a>
+            <a
+              href="/#design-showcase"
+              className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
+              onClick={(e) => handleSmoothScroll(e, '#design-showcase')}
             >
               trabajos
-            </Link>
-            <Link
-              href="/#pricing"
-              className="text-black hover:text-black/80 transition-colors duration-200 text-xs  tracking-wide py-2"
+            </a>
+            <a
+              href="/#services"
+              className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
+              onClick={(e) => handleSmoothScroll(e, '#services')}
             >
-              precios
-            </Link>
-            <Link
+              servicios
+            </a>
+            <a
               href="/#faq"
-              className="text-black hover:text-black/80 transition-colors duration-200 text-xs  tracking-wide py-2"
+              className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
+              onClick={(e) => handleSmoothScroll(e, '#faq')}
             >
               faq
-            </Link>
+            </a>
           </nav>
 
           <div className="flex items-center">
             {/* Botón de ecommerce */}
-            <Link href="/shop" className="mr-2">
+            <a href="https://fusiondiseño.com" target="_blank" rel="noopener noreferrer" className="mr-2">
               <Button
                 variant="outline"
                 className="border-black text-black hover:bg-black/5 rounded-full text-xs px-4 py-1 medium hidden md:inline-flex"
               >
                 compra lo que usamos
               </Button>
-            </Link>
+            </a>
 
             <Link href="/call">
               <Button
@@ -139,49 +196,59 @@ export default function Header() {
           } py-3 px-4 border-t border-black/10 shadow-lg`}
         >
           <nav className="flex flex-col space-y-3">
-            {/* Botón de ecommerce en móvil */}
-            <Link
-              href="/shop"
-              className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
+            {/* Enlaces actualizados para el menú móvil */}
+            <a
+              href="https://fusiondiseño.com"
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               compra lo que usamos
-            </Link>
-            <Link
+            </a>
+            <a
               href="/#benefits"
-              className="text-black hover:text-black/80 transition-colors duration-200 text-xs  tracking-wide py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              beneficios
-            </Link>
-            <Link
-              href="/#wedo"
-              className="text-black hover:text-black/80 transition-colors duration-200 text-xs  tracking-wide py-2"
-              onClick={() => setMobileMenuOpen(false)}
+              className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
+              onClick={(e) => {
+                handleSmoothScroll(e, '#benefits');
+              }}
             >
               que hacemos
-            </Link>
-            <Link
-              href="/#recent-work"
-              className="text-black hover:text-black/80 transition-colors duration-200 text-xs  tracking-wide py-2"
-              onClick={() => setMobileMenuOpen(false)}
+            </a>
+            <a
+              href="/#design-showcase"
+              className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
+              onClick={(e) => {
+                handleSmoothScroll(e, '#design-showcase');
+              }}
             >
               trabajos
-            </Link>
+            </a>
+            <a
+              href="/#services"
+              className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
+              onClick={(e) => {
+                handleSmoothScroll(e, '#services');
+              }}
+            >
+              servicios
+            </a>
             <Link
-              href="/#pricing"
-              className="text-black hover:text-black/80 transition-colors duration-200 text-xs  tracking-wide py-2"
+              href="/nosotras"
+              className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
-              precios
+              nosotras
             </Link>
-            <Link
+            <a
               href="/#faq"
-              className="text-black hover:text-black/80 transition-colors duration-200 text-xs  tracking-wide py-2"
-              onClick={() => setMobileMenuOpen(false)}
+              className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
+              onClick={(e) => {
+                handleSmoothScroll(e, '#faq');
+              }}
             >
               faq
-            </Link>
+            </a>
           </nav>
         </div>
       )}

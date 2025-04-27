@@ -6,7 +6,7 @@ export default function Hero() {
           {/* Logo display - using image instead of text */}
           <div className="w-38 md:w-48 mb-6">
             <img
-              src="/fusion-negro.png"
+              src="/fusion-negro-2.png"
               alt="Fusion Diseño Logo"
               className="w-full h-auto"
             />
