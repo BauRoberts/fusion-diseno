@@ -158,18 +158,46 @@ export default function Services() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
-          {/* Primera tarjeta - Servicio de Interiorismo (ocupa todo el ancho) */}
+        {/* Primera tarjeta - Servicio de Interiorismo (ocupa todo el ancho) */}
+        <div
+          className="col-span-1 md:col-span-6 rounded-lg p-8 relative overflow-hidden"
+          style={{
+            background: "linear-gradient(145deg, #1a1a1a 0%, #000000 100%)",
+          }}
+        >
+          <h3 className="text-3xl mb-8 relative z-10 text-white tracking-wide">
+            {services[0].title}
+          </h3>
+          <ul className="space-y-4 mb-10 relative z-10">
+            {services[0].features.map((feature) => (
+              <li key={feature} className="flex items-center text-white">
+                <div className="w-1.5 h-1.5 bg-white rounded-full mr-2.5" />
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <Link href="/llamada" className="relative z-10 inline-block">
+            <div className="inline-flex items-center justify-center px-6 py-2.5 text-sm medium text-white border border-white/30 hover:bg-white hover:text-black transition-colors duration-300 rounded-sm tracking-wider">
+              {services[0].cta}
+            </div>
+          </Link>
+        </div>
+
+        {/* Tarjetas 2 y 3 (cada una ocupa la mitad del ancho) */}
+        {services.slice(1).map((service) => (
           <div
-            className="col-span-1 md:col-span-6 rounded-lg p-8 relative overflow-hidden"
+            key={service.id}
+            className="col-span-1 md:col-span-3 rounded-lg p-8 relative overflow-hidden"
             style={{
               background: "linear-gradient(145deg, #1a1a1a 0%, #000000 100%)",
             }}
           >
             <h3 className="text-3xl mb-8 relative z-10 text-white tracking-wide">
-              {services[0].title}
+              {service.title}
             </h3>
             <ul className="space-y-4 mb-10 relative z-10">
-              {services[0].features.map((feature) => (
+              {service.features.map((feature) => (
                 <li key={feature} className="flex items-center text-white">
                   <div className="w-1.5 h-1.5 bg-white rounded-full mr-2.5" />
                   <span>{feature}</span>
@@ -179,40 +207,12 @@ export default function Services() {
 
             <Link href="/llamada" className="relative z-10 inline-block">
               <div className="inline-flex items-center justify-center px-6 py-2.5 text-sm medium text-white border border-white/30 hover:bg-white hover:text-black transition-colors duration-300 rounded-sm tracking-wider">
-                {services[0].cta}
+                {service.cta}
               </div>
             </Link>
           </div>
-
-          {/* Tarjetas 2 y 3 (cada una ocupa la mitad del ancho) */}
-          {services.slice(1).map((service) => (
-            <div
-              key={service.id}
-              className="col-span-1 md:col-span-3 rounded-lg p-8 relative overflow-hidden"
-              style={{
-                background: "linear-gradient(145deg, #1a1a1a 0%, #000000 100%)",
-              }}
-            >
-              <h3 className="text-3xl mb-8 relative z-10 text-white tracking-wide">
-                {service.title}
-              </h3>
-              <ul className="space-y-4 mb-10 relative z-10">
-                {service.features.map((feature) => (
-                  <li key={feature} className="flex items-center text-white">
-                    <div className="w-1.5 h-1.5 bg-white rounded-full mr-2.5" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <Link href="/llamada" className="relative z-10 inline-block">
-                <div className="inline-flex items-center justify-center px-6 py-2.5 text-sm medium text-white border border-white/30 hover:bg-white hover:text-black transition-colors duration-300 rounded-sm tracking-wider">
-                  {service.cta}
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
+        ))}
+      </div>
         </div>
 
         <div className="bg-gray-50 bg-opacity-90 rounded-lg p-10 mt-20 relative overflow-hidden">
