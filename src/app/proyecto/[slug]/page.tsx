@@ -3,7 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { getProjectBySlug, getRelatedProjects, getAllProjects } from "@/data/project";
+import {
+  getProjectBySlug,
+  getRelatedProjects,
+  getAllProjects,
+} from "@/data/project";
 import { Container } from "@/components/ui/container";
 
 // Definimos los parámetros que recibe esta página
@@ -16,7 +20,7 @@ export interface ProjectPageProps {
 // Esta función es necesaria para la exportación estática con "output: export"
 export async function generateStaticParams() {
   const projects = getAllProjects();
-  
+
   return projects.map((project) => ({
     slug: project.slug,
   }));
@@ -25,27 +29,27 @@ export async function generateStaticParams() {
 export default function ProjectPage({ params }: ProjectPageProps) {
   // Obtenemos el proyecto por su slug
   const project = getProjectBySlug(params.slug);
-  
+
   // Si no existe el proyecto, mostramos un 404
   if (!project) {
     notFound();
   }
-  
+
   // Obtenemos los proyectos relacionados
   const relatedProjects = getRelatedProjects(project.id);
 
   return (
     <main className="bg-white min-h-screen">
       <Header />
-      
+
       {/* Hero de proyecto - Inspirado en Nosotras */}
       <section className="pt-32 pb-12 md:pt-40 md:pb-20">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
               <div className="absolute inset-0 fade-mask">
-                <Image 
-                  src={project.images[0]} 
+                <Image
+                  src={project.images[0]}
                   alt={project.name}
                   fill
                   className="object-cover"
@@ -58,7 +62,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               <h1 className="font-instrument-serif text-3xl md:text-5xl uppercase font-medium text-black leading-tight tracking-wide mb-6">
                 {project.name}
               </h1>
-              
+
               <div className="flex flex-wrap gap-3 mb-6">
                 {project.tags.map((tag: string) => (
                   <span
@@ -69,33 +73,41 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                   </span>
                 ))}
               </div>
-              
+
               <p className="font-figtree text-lg text-black/80 leading-relaxed">
                 {project.content.summary}
               </p>
-              
+
               <div className="grid grid-cols-2 gap-4 mt-8">
                 {project.details.client && (
                   <div>
-                    <h3 className="text-sm font-medium text-medium text-black/50">Cliente</h3>
+                    <h3 className="text-sm font-medium text-medium text-black/50">
+                      Cliente
+                    </h3>
                     <p className="text">{project.details.client}</p>
                   </div>
                 )}
                 {project.details.location && (
                   <div>
-                    <h3 className="text-sm font-medium text-medium text-black/50">Ubicación</h3>
+                    <h3 className="text-sm font-medium text-medium text-black/50">
+                      Ubicación
+                    </h3>
                     <p className="text">{project.details.location}</p>
                   </div>
                 )}
                 {project.details.year && (
                   <div>
-                    <h3 className="text-sm font-medium text-medium text-black/50">Año</h3>
+                    <h3 className="text-sm font-medium text-medium text-black/50">
+                      Año
+                    </h3>
                     <p className="text">{project.details.year}</p>
                   </div>
                 )}
                 {project.details.size && (
                   <div>
-                    <h3 className="text-sm font-medium text-medium text-black/50">Superficie</h3>
+                    <h3 className="text-sm font-medium text-medium text-black/50">
+                      Superficie
+                    </h3>
                     <p className="text">{project.details.size}</p>
                   </div>
                 )}
@@ -117,27 +129,35 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             priority
           />
         </div>
-        
+
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 relative z-10">
             <div className="space-y-6">
-              {project.content.sections.slice(0, 2).map((section: any, index: number) => (
-                <div key={index} className="space-y-4">
-                  <h3 className="text-xl font-medium uppercase tracking-wider">{section.title}</h3>
-                  <p className="font-figtree text-lg text-black/80 leading-relaxed text-long">
-                    {section.text}
-                  </p>
-                </div>
-              ))}
+              {project.content.sections
+                .slice(0, 2)
+                .map((section: any, index: number) => (
+                  <div key={index} className="space-y-4">
+                    <h3 className="text-xl font-medium uppercase tracking-wider">
+                      {section.title}
+                    </h3>
+                    <p className="font-figtree text-lg text-black/80 leading-relaxed text-long">
+                      {section.text}
+                    </p>
+                  </div>
+                ))}
             </div>
-            
+
             <div className="flex flex-col w-full">
               {/* Primera fila con dos imágenes juntas */}
               <div className="flex w-full h-[300px]">
                 <div className="relative w-1/2 h-full overflow-hidden">
                   <div className="absolute inset-0 fade-mask">
                     <Image
-                      src={project.images.length > 1 ? project.images[1] : project.images[0]}
+                      src={
+                        project.images.length > 1
+                          ? project.images[1]
+                          : project.images[0]
+                      }
                       alt={`${project.name} - Detalle 1`}
                       fill
                       className="object-cover"
@@ -147,7 +167,11 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 <div className="relative w-1/2 h-full overflow-hidden">
                   <div className="absolute inset-0 fade-mask">
                     <Image
-                      src={project.images.length > 2 ? project.images[2] : project.images[0]}
+                      src={
+                        project.images.length > 2
+                          ? project.images[2]
+                          : project.images[0]
+                      }
                       alt={`${project.name} - Detalle 2`}
                       fill
                       className="object-cover"
@@ -155,12 +179,16 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                   </div>
                 </div>
               </div>
-              
+
               {/* Segunda fila con una imagen que ocupa todo el ancho */}
               <div className="relative w-full h-[280px] mt-0 overflow-hidden">
                 <div className="absolute inset-0 fade-mask">
                   <Image
-                    src={project.images.length > 3 ? project.images[3] : project.images[0]}
+                    src={
+                      project.images.length > 3
+                        ? project.images[3]
+                        : project.images[0]
+                    }
                     alt={`${project.name} - Vista general`}
                     fill
                     className="object-cover"
@@ -187,23 +215,31 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 />
               </div>
             </div>
-            
+
             <div className="flex flex-col gap-0">
               <div className="relative aspect-square overflow-hidden">
                 <div className="absolute inset-0 fade-mask">
                   <Image
-                    src={project.images.length > 1 ? project.images[1] : project.images[0]}
+                    src={
+                      project.images.length > 1
+                        ? project.images[1]
+                        : project.images[0]
+                    }
                     alt={`${project.name} - Detalle`}
                     fill
                     className="object-cover"
                   />
                 </div>
               </div>
-              
+
               <div className="relative aspect-square overflow-hidden">
                 <div className="absolute inset-0 fade-mask">
                   <Image
-                    src={project.images.length > 2 ? project.images[2] : project.images[0]}
+                    src={
+                      project.images.length > 2
+                        ? project.images[2]
+                        : project.images[0]
+                    }
                     alt={`${project.name} - Detalle`}
                     fill
                     className="object-cover"
@@ -212,12 +248,12 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               </div>
             </div>
           </div>
-          
+
           {/* Grid de 4 imágenes abajo */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
             {project.images.slice(0, 4).map((image: string, index: number) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="aspect-square relative overflow-hidden"
               >
                 <div className="absolute inset-0 fade-mask">
@@ -243,8 +279,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
               {relatedProjects.map((relatedProject: any) => (
-                <Link 
-                  key={relatedProject.id} 
+                <Link
+                  key={relatedProject.id}
                   href={`/proyecto/${relatedProject.slug}`}
                   className="group"
                 >
@@ -258,7 +294,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                       />
                     </div>
                   </div>
-                  <h3 className="text-xl font-medium mb-2">{relatedProject.name}</h3>
+                  <h3 className="text-xl font-medium mb-2">
+                    {relatedProject.name}
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {relatedProject.tags.slice(0, 2).map((tag: string) => (
                       <span

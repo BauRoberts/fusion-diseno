@@ -19,25 +19,28 @@ export default function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    
+
     // Manejar navegación con hash al cargar la página
     const handleHashNavigation = () => {
       const hash = window.location.hash;
-      if (hash && hash.startsWith('#')) {
+      if (hash && hash.startsWith("#")) {
         setTimeout(() => {
           const targetSection = document.querySelector(hash);
           if (targetSection) {
             const headerHeight = 80;
-            const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            const targetPosition =
+              targetSection.getBoundingClientRect().top +
+              window.pageYOffset -
+              headerHeight;
             window.scrollTo({
               top: targetPosition,
-              behavior: 'smooth'
+              behavior: "smooth",
             });
           }
         }, 100); // Pequeño delay para asegurar que el DOM está listo
       }
     };
-    
+
     // Ejecutar cuando se carga la página
     handleHashNavigation();
 
@@ -45,37 +48,44 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  
+
   // Función para manejar el scroll suave a las secciones
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string
+  ) => {
     // Solo procesar enlaces internos que empiezan con #
-    if (!targetId.startsWith('#')) return;
-    
+    if (!targetId.startsWith("#")) return;
+
     e.preventDefault();
-    
+
     // Verificar si estamos en la página principal
-    const isHomePage = window.location.pathname === '/' || window.location.pathname === '';
-    
+    const isHomePage =
+      window.location.pathname === "/" || window.location.pathname === "";
+
     if (!isHomePage) {
       // Si no estamos en la página principal, redirigir a la página principal con el hash
-      window.location.href = '/' + targetId;
+      window.location.href = "/" + targetId;
       return;
     }
-    
+
     // Si estamos en la página principal, hacer scroll suave
     const targetSection = document.querySelector(targetId);
-    
+
     if (targetSection) {
       // Cerrar el menú móvil si está abierto
       if (mobileMenuOpen) setMobileMenuOpen(false);
-      
+
       // Calcular la posición para el scroll con un pequeño offset
       const headerHeight = 80; // altura aproximada del header
-      const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-      
+      const targetPosition =
+        targetSection.getBoundingClientRect().top +
+        window.pageYOffset -
+        headerHeight;
+
       window.scrollTo({
         top: targetPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   };
@@ -109,41 +119,34 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6 absolute left-1/2 transform -translate-x-1/2 transition-all duration-300">
-            <Link href="/nosotras" className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2">
+            <Link
+              href="/nosotras"
+              className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
+            >
               nosotras
             </Link>
-            <a
-              href="/#benefits"
+            <Link
+              href="/que-hacemos"
               className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
-              onClick={(e) => handleSmoothScroll(e, '#benefits')}
             >
               que hacemos
-            </a>
+            </Link>
             <Link
               href="/proyecto"
               className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
             >
               trabajos
             </Link>
-            <a
-              href="/proyecto"
-              className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
-              onClick={(e) => handleSmoothScroll(e, '#services')}
-            >
-              servicios
-            </a>
-            <a
-              href="/#faq"
-              className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
-              onClick={(e) => handleSmoothScroll(e, '#faq')}
-            >
-              faq
-            </a>
           </nav>
 
           <div className="flex items-center">
             {/* Botón de ecommerce */}
-            <a href="https://fusiondiseño.com" target="_blank" rel="noopener noreferrer" className="mr-2">
+            <a
+              href="https://fusiondiseño.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mr-2"
+            >
               <Button
                 variant="outline"
                 className="border-black text-black hover:bg-black/5 rounded-full text-xs px-4 py-1 medium hidden md:inline-flex"
@@ -198,22 +201,20 @@ export default function Header() {
             {/* Enlaces actualizados para el menú móvil */}
             <a
               href="https://fusiondiseño.com"
-              target="_blank" 
+              target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               compra lo que usamos
             </a>
-            <a
-              href="/#benefits"
+            <Link
+              href="/que-hacemos"
               className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
-              onClick={(e) => {
-                handleSmoothScroll(e, '#benefits');
-              }}
+              onClick={() => setMobileMenuOpen(false)}
             >
               que hacemos
-            </a>
+            </Link>
             <Link
               href="/proyecto"
               className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
@@ -221,15 +222,6 @@ export default function Header() {
             >
               trabajos
             </Link>
-            <a
-              href="/#services"
-              className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
-              onClick={(e) => {
-                handleSmoothScroll(e, '#services');
-              }}
-            >
-              servicios
-            </a>
             <Link
               href="/nosotras"
               className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
@@ -237,15 +229,6 @@ export default function Header() {
             >
               nosotras
             </Link>
-            <a
-              href="/#faq"
-              className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
-              onClick={(e) => {
-                handleSmoothScroll(e, '#faq');
-              }}
-            >
-              faq
-            </a>
           </nav>
         </div>
       )}

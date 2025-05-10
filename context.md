@@ -49,19 +49,46 @@ The project is built using:
 The project follows a modular component-based architecture:
 
 ```
-src/
-├── app/                    # App router pages
-│   ├── page.tsx            # Home page
-│   ├── call/               # Booking call page
-│   ├── globals.css         # Global styles
-│   └── layout.tsx          # Root layout
-├── components/             # Reusable components
-│   ├── ui/                 # UI components from shadcn/ui
-│   ├── header.tsx          # Site header
-│   ├── footer.tsx          # Site footer
-│   ├── hero.tsx            # Hero section
-│   └── ...                 # Other section components
-└── lib/                    # Utility functions
+├── src
+│   ├── app
+│   │   ├── call
+│   │   │   └── page.tsx
+│   │   ├── ClientBody.tsx
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── nosotras
+│   │   │   └── page.tsx
+│   │   ├── page.tsx
+│   │   └── proyecto
+│   │       ├── [slug]
+│   │       │   ├── generateStaticParams.ts
+│   │       │   └── page.tsx
+│   │       └── page.tsx
+│   ├── components
+│   │   ├── benefits.tsx
+│   │   ├── design-showcase.tsx
+│   │   ├── faq.tsx
+│   │   ├── featured-work.tsx
+│   │   ├── footer.tsx
+│   │   ├── header.tsx
+│   │   ├── hero.tsx
+│   │   ├── pricing.tsx
+│   │   ├── project
+│   │   ├── services.tsx
+│   │   └── ui
+│   │       ├── accordion.tsx
+│   │       ├── button.tsx
+│   │       ├── card.tsx
+│   │       ├── checkbox.tsx
+│   │       ├── container.tsx
+│   │       ├── dialog.tsx
+│   │       └── sheet.tsx
+│   ├── data
+│   │   └── project.ts
+│   └── lib
+│       └── utils.ts
+├── tailwind.config.ts
+└── tsconfig.json
 ```
 
 ### UI Design System

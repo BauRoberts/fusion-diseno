@@ -36,7 +36,7 @@ export default function CallPage() {
                 p(api, arguments);
               };
               const namespace = ar[1];
-              api.q = api.q || ([] as any[]);
+              api.q = api.q || ([] as Array<any>);
               if (typeof namespace === "string") {
                 cal.ns[namespace] = cal.ns[namespace] || api;
                 p(cal.ns[namespace], ar);

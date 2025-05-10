@@ -16,15 +16,6 @@ export default function Home() {
       <section id="design-showcase">
         <DesignShowcase />
       </section>
-      <section id="benefits">
-        <Benefits />
-      </section>
-      <section id="services">
-        <Services />
-      </section>
-      <section id="faq">
-        <FAQ />
-      </section>
       <Footer />
     </main>
   );

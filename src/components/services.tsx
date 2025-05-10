@@ -48,7 +48,7 @@ const serviceTypes = [
   "Cafés y Restaurantes",
   "Remodelaciones Integrales",
   "Proyectos desde Obra",
-  
+
   // Aspectos técnicos
   "Relevamiento y Anteproyecto",
   "Selección de Materiales",
@@ -57,7 +57,7 @@ const serviceTypes = [
   "Mobiliario a Medida",
   "Coordinación de Proveedores",
   "Supervisión de Obra",
-  
+
   // Servicio Fusion
   "Diseño de Identidad Visual",
   "Branding para Espacios",
@@ -109,7 +109,7 @@ export default function Services() {
   return (
     <section
       id="servicios"
-      className="py-20 relative"
+      className="pt-32 pb-20 relative" // Añadido padding-top para compensar el header fijo
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
@@ -148,71 +148,49 @@ export default function Services() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div>
-        <div className="mb-10">
-          <span className="inline-block text-sm medium mb-2">
-            NUESTROS SERVICIOS
-          </span>
-          <h2 className="font-sans text-3xl md:text-4xl">
-            Soluciones de diseño personalizadas que <em className="not-italic">transforman cada espacio</em>
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
-        {/* Primera tarjeta - Servicio de Interiorismo (ocupa todo el ancho) */}
-        <div
-          className="col-span-1 md:col-span-6 rounded-lg p-8 relative overflow-hidden"
-          style={{
-            background: "linear-gradient(145deg, #1a1a1a 0%, #000000 100%)",
-          }}
-        >
-          <h3 className="text-3xl mb-8 relative z-10 text-white tracking-wide">
-            {services[0].title}
-          </h3>
-          <ul className="space-y-4 mb-10 relative z-10">
-            {services[0].features.map((feature) => (
-              <li key={feature} className="flex items-center text-white">
-                <div className="w-1.5 h-1.5 bg-white rounded-full mr-2.5" />
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
-
-          <Link href="/call" className="relative z-10 inline-block">
-            <div className="inline-flex items-center justify-center px-6 py-2.5 text-sm medium text-white border border-white/30 hover:bg-white hover:text-black transition-colors duration-300 rounded-sm tracking-wider">
-              {services[0].cta}
-            </div>
-          </Link>
-        </div>
-
-        {/* Tarjetas 2 y 3 (cada una ocupa la mitad del ancho) */}
-        {services.slice(1).map((service) => (
-          <div
-            key={service.id}
-            className="col-span-1 md:col-span-3 rounded-lg p-8 relative overflow-hidden"
-            style={{
-              background: "linear-gradient(145deg, #1a1a1a 0%, #000000 100%)",
-            }}
-          >
-            <h3 className="text-3xl mb-8 relative z-10 text-white tracking-wide">
-              {service.title}
-            </h3>
-            <ul className="space-y-4 mb-10 relative z-10">
-              {service.features.map((feature) => (
-                <li key={feature} className="flex items-center text-white">
-                  <div className="w-1.5 h-1.5 bg-white rounded-full mr-2.5" />
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-
-            <Link href="/call" className="relative z-10 inline-block">
-              <div className="inline-flex items-center justify-center px-6 py-2.5 text-sm medium text-white border border-white/30 hover:bg-white hover:text-black transition-colors duration-300 rounded-sm tracking-wider">
-                {service.cta}
-              </div>
-            </Link>
+          <div className="mb-10">
+            <span className="inline-block text-sm medium mb-2">
+              NUESTROS SERVICIOS
+            </span>
+            <h2 className="font-sans text-3xl md:text-4xl">
+              Soluciones de diseño personalizadas que{" "}
+              <em className="not-italic">transforman cada espacio</em>
+            </h2>
           </div>
-        ))}
-      </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Tres tarjetas iguales */}
+            {services.map((service) => (
+              <div
+                key={service.id}
+                className="col-span-1 rounded-lg p-8 relative overflow-hidden bg-white shadow-lg"
+                style={{
+                  background: "white",
+                }}
+              >
+                <h3 className="text-2xl md:text-3xl mb-8 relative z-10 text-black tracking-wide">
+                  {service.title}
+                </h3>
+                <ul className="space-y-4 mb-10 relative z-10">
+                  {service.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-center text-gray-700"
+                    >
+                      <div className="w-1.5 h-1.5 bg-black rounded-full mr-2.5" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link href="/call" className="relative z-10 inline-block">
+                  <div className="inline-flex items-center justify-center px-6 py-2.5 text-sm medium text-white bg-black hover:bg-gray-800 transition-colors duration-300 rounded-sm tracking-wider">
+                    {service.cta}
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="bg-gray-50 bg-opacity-90 rounded-lg p-10 mt-20 relative overflow-hidden">
