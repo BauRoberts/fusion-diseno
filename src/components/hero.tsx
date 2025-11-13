@@ -18,7 +18,7 @@ export default function Hero() {
         </h2>
 
         <p className="text-black/80 text-center mb-12 text-lg max-w-2xl mx-auto">
-          Fusionamos arquitectura y diseño gráfico para crear ambientes únicos que reflejan tu esencia. Cada proyecto es una historia donde la funcionalidad se encuentra con la belleza.
+          Fusionamos arquitectura y diseño gráfico para crear ambientes únicos que reflejan tu esencia. Cada proyecto es una historia donde la estética se encuentra con la funcionalidad.
         </p>  
       </div>
     </section>

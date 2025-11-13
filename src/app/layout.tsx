@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Fusion Diseño - Transformando espacios con diseño interior exclusivo",
   description: "Transformando espacios con diseño interior exclusivo",
   icons: {
-    icon: "/favicon.png", // This references your file in the public directory
+    icon: "/f.on-negro.png", // This references your file in the public directory
   },
 };
 export default function RootLayout({

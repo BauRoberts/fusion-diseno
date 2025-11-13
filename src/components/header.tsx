@@ -94,23 +94,23 @@ export default function Header() {
     <header className="fixed w-full top-0 z-50 transition-all duration-300">
       <div
         className={`container mx-auto ${
-          scrolled ? "p-0 max-w-full" : "py-0.5 px-4"
+          scrolled ? "p-0 max-w-full" : "py-2 px-4"
         } transition-all duration-300`}
       >
         <div
           className={`${
             scrolled
-              ? "bg-white py-1.5 rounded-none w-full"
-              : "bg-white/60 backdrop-blur-sm rounded-lg py-1"
+              ? "bg-white py-4 rounded-none w-full"
+              : "bg-white/60 backdrop-blur-sm rounded-lg py-3"
           } flex items-center justify-between px-4 lg:px-6 shadow-lg transition-all duration-300`}
         >
           <Link href="/" className="text-black">
-            <div className="w-16 py-1">
+            <div className="w-24 py-2">
               <Image
-                src="/f.on-negro.png"
+                src="/fusion-negro-2.png"
                 alt="Fusion Logo"
-                width={64}
-                height={20}
+                width={96}
+                height={30}
                 className="h-auto w-full"
                 priority
               />
@@ -119,6 +119,12 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6 absolute left-1/2 transform -translate-x-1/2 transition-all duration-300">
+            <Link
+              href="/"
+              className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
+            >
+              home
+            </Link>
             <Link
               href="/nosotras"
               className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
@@ -199,6 +205,13 @@ export default function Header() {
         >
           <nav className="flex flex-col space-y-3">
             {/* Enlaces actualizados para el menú móvil */}
+            <Link
+              href="/"
+              className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              home
+            </Link>
             <a
               href="https://fusiondiseño.com"
               target="_blank"
