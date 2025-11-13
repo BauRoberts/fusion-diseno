@@ -38,7 +38,7 @@ export default function ProjectsPage() {
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
-              <div className="absolute inset-0 fade-mask">
+              <div className="absolute inset-0 ">
                 <Image
                   src={projects[0].images[0]}
                   alt="Proyectos Destacados"
@@ -120,7 +120,7 @@ export default function ProjectsPage() {
                   className="group w-1/2"
                 >
                   <div className="aspect-square relative overflow-hidden">
-                    <div className="absolute inset-0 fade-mask">
+                    <div className="absolute inset-0 ">
                       <Image
                         src={project.images[0]}
                         alt={project.name}
@@ -142,7 +142,7 @@ export default function ProjectsPage() {
               className="group w-full block mt-0"
             >
               <div className="aspect-[21/9] relative overflow-hidden">
-                <div className="absolute inset-0 fade-mask">
+                <div className="absolute inset-0 ">
                   <Image
                     src={projects.length > 2 ? projects[2].images[0] : projects[0].images[0]}
                     alt={projects.length > 2 ? projects[2].name : projects[0].name}
@@ -173,7 +173,7 @@ export default function ProjectsPage() {
                 className="group relative"
               >
                 <div className="aspect-square relative overflow-hidden">
-                  <div className="absolute inset-0 fade-mask">
+                  <div className="absolute inset-0 ">
                     <Image
                       src={project.images[0]}
                       alt={project.name}
@@ -211,7 +211,7 @@ export default function ProjectsPage() {
                   className="group relative flex-shrink-0 w-[85vw] snap-center"
                 >
                   <div className="aspect-square relative overflow-hidden rounded-lg">
-                    <div className="absolute inset-0 fade-mask">
+                    <div className="absolute inset-0 ">
                       <Image
                         src={project.images[0]}
                         alt={project.name}

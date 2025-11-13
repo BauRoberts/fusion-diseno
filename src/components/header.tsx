@@ -199,15 +199,15 @@ export default function Header() {
         <div
           className={`md:hidden ${
             scrolled
-              ? "bg-black"
-              : "mt-1 mx-4 bg-black/90 backdrop-blur-sm rounded-lg"
+              ? "bg-white"
+              : "mt-1 mx-4 bg-white backdrop-blur-sm rounded-lg"
           } py-3 px-4 border-t border-black/10 shadow-lg`}
         >
           <nav className="flex flex-col space-y-3">
             {/* Enlaces actualizados para el menú móvil */}
             <Link
               href="/"
-              className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
+              className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               home
@@ -216,28 +216,28 @@ export default function Header() {
               href="https://fusiondiseño.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
+              className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               compra lo que usamos
             </a>
             <Link
               href="/que-hacemos"
-              className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
+              className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               que hacemos
             </Link>
             <Link
               href="/proyecto"
-              className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
+              className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               trabajos
             </Link>
             <Link
               href="/nosotras"
-              className="text-white hover:text-white/80 transition-colors duration-200 text-xs tracking-wide py-2"
+              className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               nosotras

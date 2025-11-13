@@ -15,6 +15,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'images.squarespace-cdn.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
       }
     ],
     unoptimized: true,

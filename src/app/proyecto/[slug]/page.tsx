@@ -12,9 +12,9 @@ import { Container } from "@/components/ui/container";
 
 // Definimos los parámetros que recibe esta página
 export interface ProjectPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // Esta función es necesaria para la exportación estática con "output: export"
@@ -26,9 +26,12 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  // Await params before accessing properties
+  const { slug } = await params;
+
   // Obtenemos el proyecto por su slug
-  const project = getProjectBySlug(params.slug);
+  const project = getProjectBySlug(slug);
 
   // Si no existe el proyecto, mostramos un 404
   if (!project) {
@@ -46,8 +49,12 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       <section className="pt-32 pb-12 md:pt-40 md:pb-20">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
-              <div className="absolute inset-0 fade-mask">
+            <div className={`relative w-full overflow-hidden ${
+              project.imageOrientation === "vertical"
+                ? "h-[400px] md:h-[800px]"
+                : "h-[400px] md:h-[600px]"
+            }`}>
+              <div className="absolute inset-0 ">
                 <Image
                   src={project.images[0]}
                   alt={project.name}
@@ -122,7 +129,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         {/* Fondo estático de plano arquitectónico */}
         <div className="absolute inset-0 w-full h-full z-0 opacity-10">
           <Image
-            src="https://laurao.com/assets/LauraO_3-9718440d.svg"
+            src="/bg-planos.svg"
             alt="Floor Plan Background"
             fill
             className="object-cover"
@@ -131,142 +138,198 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         </div>
 
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 relative z-10">
-            <div className="space-y-6">
-              {project.content.sections
-                .slice(0, 2)
-                .map((section: any, index: number) => (
-                  <div key={index} className="space-y-4">
-                    <h3 className="text-xl font-medium uppercase tracking-wider">
-                      {section.title}
-                    </h3>
-                    <p className="font-figtree text-lg text-black/80 leading-relaxed text-long">
-                      {section.text}
-                    </p>
+          {project.imageOrientation === "vertical" ? (
+            /* Layout para proyectos verticales: texto arriba, 3 imágenes abajo */
+            <div className="relative z-10">
+              <div className="space-y-6 mb-12">
+                {project.content.sections
+                  .slice(0, 2)
+                  .map((section: any, index: number) => (
+                    <div key={index} className="space-y-4">
+                      <h3 className="text-xl font-medium uppercase tracking-wider">
+                        {section.title}
+                      </h3>
+                      <p className="font-figtree text-lg text-black/80 leading-relaxed text-long">
+                        {section.text}
+                      </p>
+                    </div>
+                  ))}
+              </div>
+
+              {/* Galería de 3 imágenes verticales lado a lado */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+                {project.images.slice(1, 4).map((image: string, index: number) => (
+                  <div
+                    key={index}
+                    className="relative aspect-[3/4] overflow-hidden"
+                  >
+                    <div className="absolute inset-0 ">
+                      <Image
+                        src={image}
+                        alt={`${project.name} - Detalle ${index + 1}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
                   </div>
                 ))}
+              </div>
             </div>
+          ) : (
+            /* Layout para proyectos horizontales: original */
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 relative z-10">
+              <div className="space-y-6">
+                {project.content.sections
+                  .slice(0, 2)
+                  .map((section: any, index: number) => (
+                    <div key={index} className="space-y-4">
+                      <h3 className="text-xl font-medium uppercase tracking-wider">
+                        {section.title}
+                      </h3>
+                      <p className="font-figtree text-lg text-black/80 leading-relaxed text-long">
+                        {section.text}
+                      </p>
+                    </div>
+                  ))}
+              </div>
 
-            <div className="flex flex-col w-full">
-              {/* Primera fila con dos imágenes juntas */}
-              <div className="flex w-full h-[300px]">
-                <div className="relative w-1/2 h-full overflow-hidden">
-                  <div className="absolute inset-0 fade-mask">
-                    <Image
-                      src={
-                        project.images.length > 1
-                          ? project.images[1]
-                          : project.images[0]
-                      }
-                      alt={`${project.name} - Detalle 1`}
-                      fill
-                      className="object-cover"
-                    />
+              <div className="flex flex-col w-full">
+                {/* Primera fila con dos imágenes juntas */}
+                <div className="flex w-full h-[300px]">
+                  <div className="relative w-1/2 h-full overflow-hidden">
+                    <div className="absolute inset-0 ">
+                      <Image
+                        src={
+                          project.images.length > 1
+                            ? project.images[1]
+                            : project.images[0]
+                        }
+                        alt={`${project.name} - Detalle 1`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                  <div className="relative w-1/2 h-full overflow-hidden">
+                    <div className="absolute inset-0 ">
+                      <Image
+                        src={
+                          project.images.length > 2
+                            ? project.images[2]
+                            : project.images[0]
+                        }
+                        alt={`${project.name} - Detalle 2`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
                   </div>
                 </div>
-                <div className="relative w-1/2 h-full overflow-hidden">
-                  <div className="absolute inset-0 fade-mask">
+
+                {/* Segunda fila con una imagen que ocupa todo el ancho */}
+                <div className="relative w-full h-[280px] mt-0 overflow-hidden">
+                  <div className="absolute inset-0 ">
                     <Image
                       src={
-                        project.images.length > 2
-                          ? project.images[2]
+                        project.images.length > 3
+                          ? project.images[3]
                           : project.images[0]
                       }
-                      alt={`${project.name} - Detalle 2`}
+                      alt={`${project.name} - Vista general`}
                       fill
                       className="object-cover"
                     />
                   </div>
                 </div>
               </div>
-
-              {/* Segunda fila con una imagen que ocupa todo el ancho */}
-              <div className="relative w-full h-[280px] mt-0 overflow-hidden">
-                <div className="absolute inset-0 fade-mask">
-                  <Image
-                    src={
-                      project.images.length > 3
-                        ? project.images[3]
-                        : project.images[0]
-                    }
-                    alt={`${project.name} - Vista general`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
             </div>
-          </div>
+          )}
         </Container>
       </section>
 
       {/* Galería de imágenes completa - sin título */}
       <section className="py-16">
         <Container>
-          {/* Layout de imagen grande a la izquierda y 2 más pequeñas a la derecha */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 mb-0">
-            <div className="md:col-span-2 relative aspect-[16/9] overflow-hidden">
-              <div className="absolute inset-0 fade-mask">
-                <Image
-                  src={project.images[0]}
-                  alt={`${project.name} - Vista principal`}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-0">
-              <div className="relative aspect-square overflow-hidden">
-                <div className="absolute inset-0 fade-mask">
-                  <Image
-                    src={
-                      project.images.length > 1
-                        ? project.images[1]
-                        : project.images[0]
-                    }
-                    alt={`${project.name} - Detalle`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+          {project.imageOrientation === "vertical" ? (
+            /* Layout optimizado para imágenes verticales: 3-1-3 */
+            <>
+              {/* Primera fila: 3 columnas de imágenes verticales (imágenes 4, 5, 6) */}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-0 mb-0">
+                {project.images.slice(4, 7).map((image: string, index: number) => (
+                  <div
+                    key={index + 4}
+                    className="relative aspect-[9/16] overflow-hidden"
+                  >
+                    <div className="absolute inset-0 ">
+                      <Image
+                        src={image}
+                        alt={`${project.name} - Imagen ${index + 5}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
 
-              <div className="relative aspect-square overflow-hidden">
-                <div className="absolute inset-0 fade-mask">
-                  <Image
-                    src={
-                      project.images.length > 2
-                        ? project.images[2]
-                        : project.images[0]
-                    }
-                    alt={`${project.name} - Detalle`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+              {/* Segunda fila: 1 imagen centrada (imagen 7) */}
+              <div className="grid grid-cols-1 gap-0 mb-0 max-w-[33.333%] mx-auto">
+                {project.images.length > 7 && (
+                  <div className="relative aspect-[9/16] overflow-hidden">
+                    <div className="absolute inset-0 ">
+                      <Image
+                        src={project.images[7]}
+                        alt={`${project.name} - Imagen 8`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
-          </div>
 
-          {/* Grid de 4 imágenes abajo */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
-            {project.images.slice(0, 4).map((image: string, index: number) => (
-              <div
-                key={index}
-                className="aspect-square relative overflow-hidden"
-              >
-                <div className="absolute inset-0 fade-mask">
-                  <Image
-                    src={image}
-                    alt={`${project.name} - Imagen ${index + 1}`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+              {/* Tercera fila: 3 columnas de nuevo (imágenes 8, 9, 10) */}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-0">
+                {project.images.slice(8, 11).map((image: string, index: number) => (
+                  <div
+                    key={index + 8}
+                    className="relative aspect-[9/16] overflow-hidden"
+                  >
+                    <div className="absolute inset-0 ">
+                      <Image
+                        src={image}
+                        alt={`${project.name} - Imagen ${index + 9}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </>
+          ) : (
+            /* Layout horizontal por defecto */
+            <>
+              {/* Grid de 4 imágenes - usando imágenes que no se mostraron antes */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
+                {project.images.slice(4, 8).map((image: string, index: number) => (
+                  <div
+                    key={index + 4}
+                    className="aspect-square relative overflow-hidden"
+                  >
+                    <div className="absolute inset-0 ">
+                      <Image
+                        src={image}
+                        alt={`${project.name} - Imagen ${index + 5}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </Container>
       </section>
 
@@ -285,7 +348,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                   className="group"
                 >
                   <div className="aspect-[4/3] relative overflow-hidden mb-4">
-                    <div className="absolute inset-0 fade-mask">
+                    <div className="absolute inset-0 ">
                       <Image
                         src={relatedProject.images[0]}
                         alt={relatedProject.name}

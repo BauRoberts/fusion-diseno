@@ -16,7 +16,7 @@ export default function NosotrasPage() {
                 src="/nosotras.png"
                 alt="María y Martina fundadoras de Fusión"
                 fill
-                className="object-cover grayscale fade-mask"
+                className="object-cover grayscale "
                 priority
               />
             </div>

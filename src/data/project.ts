@@ -7,6 +7,7 @@ export interface Project {
   tags: string[];
   link: string;
   description: string;
+  imageOrientation?: "horizontal" | "vertical"; // Orientación de las imágenes del proyecto
   details: {
     client?: string;
     location?: string;
@@ -28,176 +29,188 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    slug: "casa-m930",
-    name: "Casa M930",
+    slug: "terron-340",
+    name: "El Terrón_340",
     images: [
-      "https://images.squarespace-cdn.com/content/v1/62da949aefe9a643bf3c3de4/733cfe1d-44ba-4219-aa46-74c38210e7b1/Himera+Estudio_Casa+M930.png?format=1000w",
-      "https://images.squarespace-cdn.com/content/v1/62da949aefe9a643bf3c3de4/3ebd9669-3f7d-42a2-9eb6-24a9a4ee0074/Himera+Estudio_Casa+M930_Dormitorio+A.png?format=1000w",
-      "https://images.squarespace-cdn.com/content/v1/62da949aefe9a643bf3c3de4/1710501804851-VPBWD3PM22WPWUNRHQVM/Himera+Estudio_Casa+M930_Ba%C3%B1o+A.png?format=1000w",
-      "https://images.squarespace-cdn.com/content/v1/62da949aefe9a643bf3c3de4/1710501806096-149FY7RSERU2LEYHXSY1/Himera+Estudio_Casa+M930_Ba%C3%B1o+B.png?format=1000w",
-      "https://images.squarespace-cdn.com/content/v1/62da949aefe9a643bf3c3de4/ab54ae0d-a81f-4187-b1fe-bebb99206671/Himera+Estudio_Casa+M930_Dormitorio+B.png?format=1000w",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045973/Fusion_Terron_Fachada_b6ag2t.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045972/Fusion_Terron_Galeria_uq0kmv.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045957/Fusion_Terron_Lavadero_iudya4.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045956/Fusion_Terron_Playroom_cy818s.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045953/Fusion_Terron_Contrafachada_yv42rd.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045951/Fusion_Terron_Estar_ffduoz.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045944/Fusion_Terron_Dormitorio2_zhdqkr.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045941/Fusion_Terron_Cocina_ksfekt.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045939/Fusion_Terron_Dormitorio_o2tk48.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045937/Fusion_Terron_Ban%CC%83o_z0w3da.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045934/Fusion_Terron_Anteban%CC%83o_kkgtmq.jpg",
     ],
-    tags: ["INTERIOR DESIGN", "RESIDENTIAL", "RENOVATION"],
-    link: "/proyecto/casa-m930",
-    description: "Diseño interior completo de una residencia moderna con espacios abiertos y luminosos.",
+    tags: ["RESIDENCIAL", "INTERIORISMO INTEGRAL", "RENDERS 3D", "VIVIENDA PREMIUM"],
+    link: "/proyecto/terron-340",
+    description: "Proyecto de interiorismo integral que combina funcionalidad, diseño y confort para crear un hogar único.",
     details: {
-      client: "Cliente Privado",
-      location: "Barcelona",
-      year: "2023",
-      size: "180 m²",
-      services: ["Diseño Interior", "Arquitectura", "Mobiliario a Medida"]
+      location: "Córdoba",
+      year: "2025",
+      services: ["Interiorismo Integral", "Renders 3D", "Mobiliario a Medida"]
     },
     content: {
-      summary: "Casa M930 es un proyecto residencial que combina funcionalidad y estética para crear un espacio acogedor y contemporáneo. El diseño se centra en maximizar la luz natural y crear un flujo armonioso entre las distintas áreas de la vivienda.",
+      summary: "El Terrón_340 es un proyecto de interiorismo integral que combina funcionalidad, diseño y confort para crear un hogar único. Este proyecto incluye el diseño completo de una vivienda de 120 m² ubicada en Buenos Aires, abarcando desde la planificación de espacios hasta la selección de materiales, mobiliario y detalles decorativos.",
       sections: [
         {
           title: "Concepto de Diseño",
-          text: "Para este proyecto, buscamos un equilibrio entre la calidez y la elegancia. Utilizamos una paleta de colores neutros con acentos en tonos naturales para crear una atmósfera serena y sofisticada."
+          text: "El proyecto se desarrolla bajo un concepto que fusiona estilo contemporáneo con elementos naturales, buscando crear ambientes cálidos y sofisticados. Se priorizó la funcionalidad sin descuidar la estética, generando espacios que invitan al disfrute de cada rincón."
         },
         {
-          title: "Espacio Principal",
-          text: "El área principal de la casa combina zonas de estar, comedor y cocina en un espacio abierto que promueve la interacción social y familiar. La luz natural inunda el espacio a través de grandes ventanales."
+          title: "Espacios Principales",
+          text: "El diseño contempla una distribución abierta que integra living, comedor y cocina, maximizando la sensación de amplitud y favoreciendo la interacción social. Los espacios privados fueron cuidadosamente diseñados para garantizar privacidad y confort."
         },
         {
-          title: "Dormitorios",
-          text: "Los dormitorios fueron diseñados como santuarios de descanso, con especial atención a los textiles y la iluminación para crear ambientes relajantes y confortables."
+          title: "Materialidad",
+          text: "Se optó por una paleta de materiales nobles y contemporáneos: maderas naturales, piedras y textiles de alta calidad que aportan calidez y personalidad al conjunto. Los acabados fueron seleccionados para lograr durabilidad y atemporalidad."
         },
         {
-          title: "Baños",
-          text: "En los baños apostamos por materiales de alta calidad y diseño minimalista para crear espacios funcionales que transmiten una sensación de lujo y bienestar."
+          title: "Iluminación",
+          text: "El diseño lumínico fue cuidadosamente planificado para crear atmósferas versátiles. Se combinó iluminación general, focal y decorativa para realzar los espacios y generar diferentes ambientes según las necesidades de cada momento."
+        },
+        {
+          title: "Mobiliario",
+          text: "El mobiliario fue diseñado a medida para optimizar el uso del espacio y reflejar el estilo personal de los propietarios. Cada pieza fue pensada para complementar la arquitectura y aportar funcionalidad sin perder el carácter estético del conjunto."
         }
       ]
     },
-    relatedProjects: [2, 3]
+    relatedProjects: [2, 3, 4]
   },
   {
     id: 2,
-    slug: "casa-gv22",
-    name: "Casa GV22",
+    slug: "dlk-88",
+    name: "Local DLK_88",
     images: [
-      "https://images.squarespace-cdn.com/content/v1/62da949aefe9a643bf3c3de4/c8588125-ce4c-4686-9deb-6bd246f0b81f/Himera+Estudio+Casa+GV22+Reforma+Integral+Vigo?format=1000w",
-      "https://images.squarespace-cdn.com/content/v1/62da949aefe9a643bf3c3de4/1664989484956-0ZMNM4B7CM14ODU12E6S/Himera+Estudio_Casa+GV22_Comedor.png?format=1000w",
-      "https://images.squarespace-cdn.com/content/v1/62da949aefe9a643bf3c3de4/1664989485380-4AGO6TMJ345QY5CXAUXO/Himera+Estudio_Casa+GV22_Despacho.png?format=1000w",
-      "https://images.squarespace-cdn.com/content/v1/62da949aefe9a643bf3c3de4/1664989604570-CZSOF95F2E19S35D7NL4/Himera+Estudio_Casa+GV22_Detalle+caj%C3%B3n.png?format=1000w",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045858/Fotos_DLK_Proy-10_f0biow.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045844/Fotos_DLK_Proy-1_qrc4ko.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045867/Fotos_DLK_Proy-9_f86c3y.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045862/Fotos_DLK_Proy-8_c2ttia.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045860/Fotos_DLK_Proy-7_cxlcin.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045858/Fotos_DLK_Proy-6_mgf7v4.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045846/Fotos_DLK_Proy-5_x7lnpv.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045845/Fotos_DLK_Proy-4_wong37.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045845/Fotos_DLK_Proy-3_zqrpj7.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045845/Fotos_DLK_Proy-2_amcfi1.jpg",
     ],
-    tags: ["INTERIOR DESIGN", "RESIDENTIAL", "RENOVATION"],
-    link: "/proyecto/casa-gv22",
-    description: "Reforma integral de una vivienda familiar con énfasis en la funcionalidad y el confort.",
+    tags: ["COMERCIAL", "MOBILIARIO A MEDIDA", "DISEÑO DE LOCALES", "RETAIL"],
+    link: "/proyecto/dlk-88",
+    imageOrientation: "vertical",
+    description: "Diseño integral de local comercial con mobiliario modular y funcional para accesorios.",
     details: {
-      client: "Cliente Privado",
-      location: "Vigo",
-      year: "2022",
-      size: "150 m²",
-      services: ["Reforma Integral", "Diseño Interior", "Mobiliario"]
+      location: "Córdoba",
+      year: "2025",
+      services: ["Diseño Integral", "Mobiliario a Medida", "Diseño de Vidriera"]
     },
     content: {
-      summary: "Casa GV22 es una reforma integral donde se replanteó por completo la distribución para adaptarla a las necesidades de una familia contemporánea. El resultado es un espacio funcional que no renuncia a la estética y el diseño.",
+      summary: "En este proyecto desarrollamos el diseño integral de un local de accesorios con un enfoque modular y funcional, pensado para adaptarse a las distintas líneas de productos de la marca. Desde la concepción del espacio, buscamos transmitir una estética contemporánea y despojada, en la que los materiales, la iluminación y la disposición del mobiliario acompañaran el protagonismo de las piezas exhibidas.",
       sections: [
         {
           title: "Concepto de Diseño",
-          text: "El proyecto se centró en crear espacios versátiles y funcionales sin perder calidez. Se optó por una estética contemporánea con toques clásicos para conseguir un ambiente atemporal."
+          text: "Diseñamos y fabricamos cada elemento a medida: los módulos de exhibición interior y de vidriera, los soportes para cada producto, el sistema de estanterías para carteras, el soporte de cinturones, la barra de atención y el probador, integrados en una paleta neutra que refuerza la identidad visual del local."
         },
         {
-          title: "Espacios Sociales",
-          text: "Diseñamos un área social abierta que integra salón y comedor, facilitando la interacción familiar. La elección de materiales y texturas crea diferentes ambientes dentro del espacio abierto."
+          title: "Vidrieras",
+          text: "Las vidrieras, pensadas como una extensión del interior, incorporan planos y niveles que destacan las piezas más representativas de la marca, logrando un efecto elegante, minimalista y coherente con la estética general del proyecto."
         },
         {
-          title: "Despacho",
-          text: "Se creó un espacio de trabajo funcional integrado en la vivienda, con especial atención a la iluminación y ergonomía para garantizar productividad y confort."
+          title: "Mobiliario",
+          text: "Cada módulo fue diseñado con un enfoque modular que permite adaptarse a las diferentes temporadas y colecciones de la marca. Los materiales seleccionados refuerzan la identidad minimalista del local, con acabados que aportan calidez sin restar protagonismo a los productos."
         },
         {
-          title: "Detalles",
-          text: "Prestamos especial atención a los detalles constructivos y de almacenamiento, desarrollando soluciones a medida que maximizan el espacio disponible y añaden carácter al conjunto."
+          title: "Resultado",
+          text: "El resultado es un espacio cálido, ordenado y versátil, donde cada detalle fue diseñado para resaltar los productos y ofrecer una experiencia de compra fluida y coherente con el concepto de la marca."
         }
       ]
     },
-    relatedProjects: [1, 3]
+    relatedProjects: [1, 3, 4]
   },
   {
     id: 3,
-    slug: "casa-v268",
-    name: "Casa V268",
+    slug: "tribeca-84",
+    name: "Tribeca_84",
     images: [
-      "https://images.squarespace-cdn.com/content/v1/62da949aefe9a643bf3c3de4/c8bc557e-2525-4699-bb81-4b3dfc760d3c/Himera+Estudio+Casa+V268+Interiorismo+Decoracion+Vigo?format=1000w",
-      "https://images.squarespace-cdn.com/content/v1/62da949aefe9a643bf3c3de4/d47effe3-7757-4945-8f1d-f4a584dfe8b7/Himera+Estudio+Casa+V268+Entrada+%28Reforma+integral+en+Vigo%29?format=1000w",
-      "https://images.squarespace-cdn.com/content/v1/62da949aefe9a643bf3c3de4/1664980847040-IQ1SV5UY1CAYE8T956GG/Himera+Estudio_Casa+V268_Comedor.png?format=1000w",
-      "https://images.squarespace-cdn.com/content/v1/62da949aefe9a643bf3c3de4/1710498323449-LQIBC1GMD4TAO9DGTNMP/Himera+Estudio_Casa+V268_Salon.png?format=1000w",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045805/Final_Quincho_Tribeca_xzfpqb.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045749/Fotos_Tribeca_Proy-5_vfmpyu.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045800/Final_D.Principal_Tribeca_nlo1en.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045786/Final_Pileta_Tribeca_uefymg.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045736/Fotos_Tribeca_Proy-4_tcncjy.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045736/Fotos_Tribeca_Proy-2_j84qo5.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045800/Final_Living_Tribeca_2_t1mxsb.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045761/Final_Comedor_Tribeca_gobhog.jpg",
     ],
-    tags: ["INTERIORISMO", "MOBILIARIO", "RENOVACION"],
-    link: "/proyecto/casa-v268",
-    description: "Un proyecto de interiorismo que combina piezas contemporáneas con elementos clásicos.",
+    tags: ["RESIDENCIAL", "DEPARTAMENTO MODELO", "INTERIORISMO", "RENDERS 3D"],
+    link: "/proyecto/tribeca-84",
+    imageOrientation: "horizontal",
+    description: "Diseño interior completo de departamento modelo con espacios integrados y estética contemporánea.",
     details: {
-      client: "Cliente Privado",
-      location: "Vigo",
-      year: "2023",
-      size: "165 m²",
-      services: ["Interiorismo", "Mobiliario", "Decoración"]
+      location: "Córdoba",
+      year: "2025",
+      services: ["Diseño Interior", "Renders 3D", "Ambientación"]
     },
     content: {
-      summary: "Casa V268 es un proyecto de interiorismo donde se conservó la esencia original de la vivienda mientras se actualizaban sus espacios para adaptarlos a un estilo de vida contemporáneo.",
+      summary: "En este proyecto desarrollamos el diseño interior completo de un departamento modelo, pensado para representar el estilo de vida que el edificio busca transmitir. El objetivo era crear espacios con identidad, pero que a la vez resultaran atractivos para un público amplio y diverso.",
       sections: [
         {
           title: "Concepto de Diseño",
-          text: "Buscamos un equilibrio entre lo contemporáneo y lo tradicional, respetando elementos arquitectónicos originales mientras introducíamos elementos modernos para crear un contraste armonioso."
+          text: "Diseñamos el living comedor y dos dormitorios, priorizando la calidez y la neutralidad en la paleta de colores para lograr un ambiente armonioso y versátil. A través de materiales nobles, texturas suaves y una iluminación cuidadosamente planificada, buscamos reflejar un estilo contemporáneo, equilibrado y atemporal."
         },
         {
-          title: "Entrada",
-          text: "La entrada fue diseñada como una declaración de intenciones, con un diseño sobrio pero impactante que anticipa la estética del resto de la vivienda."
-        },
-        {
-          title: "Comedor",
-          text: "El comedor se concibió como un espacio elegante y acogedor, donde la mesa central actúa como punto focal, complementada por iluminación cuidadosamente seleccionada."
-        },
-        {
-          title: "Salón",
-          text: "En el salón se crearon diferentes ambientes para lectura, conversación y entretenimiento, unidos por una estética coherente pero con personalidad propia."
+          title: "Resultado",
+          text: "El resultado es un departamento funcional, cómodo y con una estética acogedora, que invita a imaginar cómo sería vivir allí: con espacios integrados, detalles bien pensados y una atmósfera que combina diseño y cotidianidad."
         }
       ]
     },
-    relatedProjects: [1, 4]
+    relatedProjects: [1, 2, 4]
   },
   {
     id: 4,
-    slug: "casa-pa2",
-    name: "Casa PA2",
+    slug: "suite-41",
+    name: "Suite_41",
     images: [
-      "https://images.squarespace-cdn.com/content/v1/62da949aefe9a643bf3c3de4/12a29080-650f-4ace-862b-218609aff251/Himera+Estudio+Casa+PA2+Interiorismo+Valencia?format=1000w",
-      "https://images.squarespace-cdn.com/content/v1/62da949aefe9a643bf3c3de4/1710498653605-DM6KO9E3XDDRAOYK6XYG/Himera+Estudio_Casa+PA2_Comedor+B.png?format=1000w",
-      "https://images.squarespace-cdn.com/content/v1/62da949aefe9a643bf3c3de4/e70d3963-2f68-4493-86a4-ae3c5deff491/Himera+Estudio_Casa+PA2_Cocina.png?format=1000w",
-      "https://images.squarespace-cdn.com/content/v1/62da949aefe9a643bf3c3de4/1710498783222-WLBVTL7WRT5FAZZCRNO8/Himera+Estudio_Casa+PA2_Puerta.png?format=1000w",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045908/Fotos_Fer_Proy-11_pfzqbb.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045909/Fotos_Fer_Proy-13_wwevqp.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045908/Fotos_Fer_Proy-12_jpkxiq.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045907/Fotos_Fer_Proy-9_zthoam.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045906/Fotos_Fer_Proy-3_lnqsbr.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045904/Fotos_Fer_Proy-10_sjuq83.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045898/Fotos_Fer_Proy-8_bnyn3e.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045898/Fotos_Fer_Proy-5_ipvjwr.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045897/Fotos_Fer_Proy-7_akhjsc.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045896/Fotos_Fer_Proy-4_anzphv.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045895/Fotos_Fer_Proy-6_ba7bv8.jpg",
+      "https://res.cloudinary.com/djs4laafl/image/upload/v1763045891/Fotos_Fer_Proy-1_zwraq5.jpg",
     ],
-    tags: ["INTERIORISMO", "DESIGN", "DESARROLLO"],
-    link: "/proyecto/casa-pa2",
-    description: "Un espacio residencial con personalidad única y atención al detalle.",
+    tags: ["RESIDENCIAL", "RENOVACIÓN", "SUITE", "INTERIORISMO INTEGRAL"],
+    link: "/proyecto/suite-41",
+    imageOrientation: "vertical",
+    description: "Renovación integral de suite principal con dormitorio, vestidor y baño completo.",
     details: {
-      client: "Cliente Privado",
-      location: "Valencia",
-      year: "2023",
-      size: "120 m²",
-      services: ["Interiorismo", "Diseño", "Desarrollo"]
+      location: "Córdoba",
+      year: "2025",
+      size: "41 m²",
+      services: ["Renovación Integral", "Diseño Interior", "Mobiliario a Medida", "Instalaciones Eléctricas y Sanitarias"]
     },
     content: {
-      summary: "Casa PA2 es un proyecto que refleja la personalidad de sus propietarios mediante una cuidada selección de materiales, colores y mobiliario. Cada detalle fue pensado para crear un espacio único y cálido.",
+      summary: "En una casa con más de 30 años, transformamos por completo un dormitorio en suite de 41 m², incluyendo dormitorio principal, vestidor, antebaño y baño.",
       sections: [
         {
-          title: "Concepto de Diseño",
-          text: "El concepto de este proyecto se centró en crear un espacio con identidad propia, incorporando elementos de diseño contemporáneo con un enfoque en la artesanía y los materiales naturales."
+          title: "Renovación Integral",
+          text: "Se renovaron todas las instalaciones eléctricas y sanitarias, y se diseñó un espacio funcional y cálido, con una cuidada selección de materiales, revestimientos y griferías."
         },
         {
-          title: "Comedor",
-          text: "El comedor fue concebido como un espacio de reunión, con una mesa generosa y una iluminación que favorece tanto las comidas familiares como las reuniones sociales."
+          title: "Diseño de Espacios",
+          text: "El dormitorio integra una cama con estructura de dosel, mesas de luz, rincón de lectura, cortinas y pisos nuevos. El baño y el antebaño fueron revestidos por completo, combinando funcionalidad con una estética contemporánea y atemporal; al igual que el vestidor que se diseñó y fabricó desde cero."
         },
         {
-          title: "Cocina",
-          text: "La cocina combina funcionalidad y estética, con materiales duraderos y un diseño que facilita el trabajo culinario sin sacrificar la estética del conjunto."
-        },
-        {
-          title: "Detalles Arquitectónicos",
-          text: "Prestamos especial atención a elementos arquitectónicos como puertas y transiciones entre espacios, utilizándolos como oportunidades para añadir personalidad al proyecto."
+          title: "Resultado",
+          text: "Una renovación integral que aporta diseño, confort y carácter a cada rincón."
         }
       ]
     },
-    relatedProjects: [2, 3]
+    relatedProjects: [1, 3, 2]
   },
 ];
 

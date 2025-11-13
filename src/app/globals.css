@@ -140,16 +140,6 @@
     @apply font-sans font-medium; /* Figtree Medium */
   }
 
-  .fade-mask {
-    mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
-    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: cover;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    -webkit-mask-size: cover;
-  }
   html {
     scroll-behavior: smooth;
   }
