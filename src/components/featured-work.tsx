@@ -14,6 +14,9 @@ export default function FeaturedWork() {
   const [intervals, setIntervals] = useState<Record<number, NodeJS.Timeout>>(
     {}
   );
+  // Track carousel scroll state
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   // Cleanup intervals on unmount
   useEffect(() => {
@@ -21,6 +24,23 @@ export default function FeaturedWork() {
       Object.values(intervals).forEach((interval) => clearInterval(interval));
     };
   }, [intervals]);
+
+  // Check scroll position for mobile carousel
+  useEffect(() => {
+    const carousel = document.getElementById('home-carousel');
+    if (!carousel) return;
+
+    const checkScroll = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = carousel;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    };
+
+    carousel.addEventListener('scroll', checkScroll);
+    checkScroll(); // Initial check
+
+    return () => carousel.removeEventListener('scroll', checkScroll);
+  }, []);
 
   // Handle mouse enter to change image
   const handleMouseEnter = (projectId: number) => {
@@ -57,8 +77,116 @@ export default function FeaturedWork() {
   };
 
   return (
-    <section id="featured-work" className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
+    <section id="featured-work" className="bg-white pb-8 md:pb-0">
+      {/* Mobile: Horizontal Scroll con flechas */}
+      <div className="md:hidden relative">
+        <div
+          id="home-carousel"
+          className="flex overflow-x-auto gap-4 px-4 snap-x snap-mandatory scrollbar-hide"
+        >
+          {projects.slice(0, 4).map((project) => (
+            <Link
+              key={project.id}
+              href={`/proyecto/${project.slug}`}
+              className="flex-shrink-0 w-[85vw] snap-center"
+            >
+              <div className="relative h-[70vh] rounded-lg overflow-hidden">
+                {/* Image Background */}
+                <div className="absolute inset-0">
+                  <Image
+                    src={project.images[0]}
+                    alt={project.name}
+                    fill
+                    className="object-cover"
+                  />
+                  {/* Dark overlay for text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                </div>
+
+                {/* Project Info */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h3 className="text-3xl font-sans mb-3">
+                    {project.name}
+                  </h3>
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {project.tags.slice(0, 2).map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-white/90 text-xs bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="text-white/90 text-sm">
+                    ver proyecto →
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Flechas de navegación */}
+        {canScrollLeft && (
+          <button
+            onClick={() => {
+              const carousel = document.getElementById('home-carousel');
+              if (carousel) {
+                const cardWidth = carousel.offsetWidth * 0.85 + 16;
+                carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+              }
+            }}
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-white hover:text-white/70 transition-colors"
+            aria-label="Proyecto anterior"
+          >
+            <svg
+              className="w-8 h-8 drop-shadow-lg"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              strokeWidth={3}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+        )}
+
+        {canScrollRight && (
+          <button
+            onClick={() => {
+              const carousel = document.getElementById('home-carousel');
+              if (carousel) {
+                const cardWidth = carousel.offsetWidth * 0.85 + 16;
+                carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+              }
+            }}
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-white hover:text-white/70 transition-colors"
+            aria-label="Siguiente proyecto"
+          >
+            <svg
+              className="w-8 h-8 drop-shadow-lg"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              strokeWidth={3}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+        )}
+      </div>
+
+      {/* Desktop: Original Layout */}
+      <div className="hidden md:block max-w-7xl mx-auto px-4 md:px-8">
         <div className="space-y-8">
           {projects.slice(0, 4).map((project) => (
             <div
