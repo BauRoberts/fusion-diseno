@@ -29,8 +29,8 @@ const socialLinks = [
     ),
   },
   {
-    name: "Pinterest",
-    href: "https://pinterest.com/fusion.diseno/",
+    name: "WhatsApp",
+    href: "https://api.whatsapp.com/message/4SE57W5U7MZGF1?autoload=1&app_absent=0",
     icon: (props: React.SVGProps<SVGSVGElement>) => (
       <svg
         viewBox="0 0 24 24"
@@ -39,15 +39,15 @@ const socialLinks = [
         {...props}
       >
         <path
-          d="M12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2ZM12.5 15.5C11.184 15.5 10.102 14.846 9.5 13.859C9.5 13.859 8.945 16.111 8.771 16.807C8.492 17.93 7.823 19.052 7.73 19.193C7.665 19.288 7.538 19.305 7.49 19.193C7.42 19.033 7 17.492 7.16 16.18C7.242 15.532 8.08 11.142 8.08 11.142C8.08 11.142 7.81 10.6 7.81 9.826C7.81 8.596 8.476 7.68 9.31 7.68C10.014 7.68 10.355 8.217 10.355 8.867C10.355 9.59 9.889 10.694 9.648 11.716C9.445 12.572 10.048 13.273 10.892 13.273C12.413 13.273 13.558 11.618 13.558 9.222C13.558 7.323 12.296 5.95 10.153 5.95C7.739 5.95 6.232 7.789 6.232 9.917C6.232 10.675 6.492 11.261 6.879 11.727C7.018 11.894 7.035 11.975 6.989 12.175C6.958 12.322 6.881 12.645 6.851 12.785C6.809 12.977 6.654 13.042 6.48 12.967C5.382 12.506 4.818 11.125 4.818 9.573C4.818 7.075 6.766 4.6 10.363 4.6C13.234 4.6 15.47 6.71 15.47 9.284C15.47 12.175 13.679 14.469 11.037 14.469C10.166 14.469 9.35 14.015 9.052 13.477C9.052 13.477 8.583 15.222 8.483 15.584C8.291 16.285 7.757 17.21 7.475 17.747C8.29 18.024 9.157 18.17 10.061 18.17C15.028 18.17 19.05 14.149 19.05 9.181C19.05 4.213 15.028 0.193 10.061 0.193C5.093 0.193 1.07 4.213 1.07 9.181C1.07 14.149 5.093 18.17 10.061 18.17H12.5V15.5Z"
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
           fill="currentColor"
         />
       </svg>
     ),
   },
   {
-    name: "Houzz",
-    href: "https://www.houzz.com/fusion.diseno",
+    name: "TikTok",
+    href: "https://www.tiktok.com/@fusion.diseno",
     icon: (props: React.SVGProps<SVGSVGElement>) => (
       <svg
         viewBox="0 0 24 24"
@@ -56,7 +56,24 @@ const socialLinks = [
         {...props}
       >
         <path
-          d="M12.9998 17.2978V9.79778L7.99976 13.0478V20.5478L12.9998 17.2978ZM12.9998 3.49778V11.0478L7.99976 7.79778V0.247779L12.9998 3.49778ZM13.9998 11.0478L18.9998 7.79778V15.3478L13.9998 18.5978V11.0478Z"
+          d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"
+          fill="currentColor"
+        />
+      </svg>
+    ),
+  },
+  {
+    name: "Email",
+    href: "mailto:interiorismofusion@gmail.com",
+    icon: (props: React.SVGProps<SVGSVGElement>) => (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        {...props}
+      >
+        <path
+          d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"
           fill="currentColor"
         />
       </svg>
@@ -71,12 +88,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
           {/* Logo */}
           <div className="flex justify-center md:justify-start">
-            <Link href="/" className="block w-20">
+            <Link href="/" className="block w-28">
               <Image
                 src="/f.on-negro.png"
                 alt="Fusion Diseño Logo"
-                width={80}
-                height={24}
+                width={112}
+                height={34}
                 className="h-auto w-full"
               />
             </Link>
@@ -88,7 +105,7 @@ export default function Footer() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-black/70 hover:text-black transition-colors text-xs tracking-wide"
+                className="text-black/70 hover:text-black transition-colors text-sm tracking-wide"
               >
                 {link.name}
               </Link>
@@ -112,11 +129,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-black/5 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-xs text-black/50 mb-4 md:mb-0">
-            © 2025 Fusion Diseño | Todos los derechos reservados
-          </p>
-          <div className="flex gap-6">
+        <div className="mt-10 pt-6 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex items-center gap-6">
             <Link
               href="/privacidad"
               className="text-xs text-black/50 hover:text-black transition-colors"
@@ -130,6 +144,12 @@ export default function Footer() {
               Términos de Uso
             </Link>
           </div>
+          <p className="text-xs text-black/50 italic">
+            Based in Cordoba, Argentina
+          </p>
+          <p className="text-xs text-black/50">
+            © 2025 Fusion Diseño | Todos los derechos reservados
+          </p>
         </div>
       </div>
     </footer>

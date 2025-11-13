@@ -21,8 +21,8 @@ export default function NosotrasPage() {
               />
             </div>
 
-            <div className="flex flex-col justify-center">
-              <p className="font-instrument-serif text-3xl md:text-4xl font-medium text-black leading-tight tracking-wide">
+            <div className="flex flex-col justify-start">
+              <p className="font-instrument-serif text-2xl md:text-3xl font-medium text-black leading-tight tracking-wide">
                 Somos María y Martina, primas hermanas y socias en este proyecto
                 que nació en una charla de café. En abril del 2024 nos juntamos
                 para diseñar espacios que transformen. Así nació{" "}
