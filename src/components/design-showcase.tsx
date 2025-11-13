@@ -1,86 +1,177 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
 
-// Updated with 6 different design items
-const designItems = [
-  {
-    id: "item-1",
-    name: "Parma Side Table",
-    src: "https://acdn-us.mitiendanube.com/stores/004/147/146/products/parma-principal-3037807444714fcc2917372348145308-640-0.webp",
-    price: "$299",
-    link: "/shop/parma-side-table",
-  },
-  {
-    id: "item-2",
-    name: "Minimalist Vase",
-    src: "https://acdn-us.mitiendanube.com/stores/004/147/146/products/jarron-1-1-a19b0060c5d8ebdbe817433784311722-640-0.webp",
-    price: "$89",
-    link: "/shop/minimalist-vase",
-  },
-  {
-    id: "item-3",
-    name: "Artisan Chair",
-    src: "https://acdn-us.mitiendanube.com/stores/004/147/146/products/t00008-4379819c69f82b692017318097495094-640-0.webp",
-    price: "$499",
-    link: "/shop/artisan-chair",
-  },
-  {
-    id: "item-4",
-    name: "Wall Sconce Light",
-    src: "https://acdn-us.mitiendanube.com/stores/004/147/146/products/calabria-principal-d9aaab155f2c39268217372365408911-640-0.webp",
-    price: "$129",
-    link: "/shop/wall-sconce",
-  },
-  {
-    id: "item-5",
-    name: "Ceramic Bowl Set",
-    src: "https://acdn-us.mitiendanube.com/stores/004/147/146/products/velador-0-3b3f228863598a779117433785627191-640-0.webp",
-    price: "$79",
-    link: "/shop/ceramic-bowl-set",
-  },
-  {
-    id: "item-6",
-    name: "Modern Coffee Table",
-    src: "https://acdn-us.mitiendanube.com/stores/004/147/146/products/manta-rio-negro-e328629094beb8392d17321349508447-640-0.webp",
-    price: "$449",
-    link: "/shop/modern-coffee-table",
-  },
-];
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import OptimizedImage from "./optimized-image";
+import { getAllProducts } from "@/data/products";
 
 export default function DesignShowcase() {
+  const allProducts = getAllProducts();
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    // Reset scroll to start
+    carousel.scrollLeft = 0;
+
+    const checkScroll = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = carousel;
+      setCanScrollLeft(scrollLeft > 10);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    };
+
+    carousel.addEventListener('scroll', checkScroll);
+    checkScroll();
+
+    return () => carousel.removeEventListener('scroll', checkScroll);
+  }, []);
+
+  const scroll = (direction: 'left' | 'right') => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const scrollAmount = carousel.clientWidth * 0.8;
+    carousel.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <section className="bg-white py-20">
       <div className="unroot-container">
-        <h2 className="text-center font-sans  text-3xl md:text-4xl mb-12">
+        <h2 className="text-center font-sans text-3xl md:text-4xl mb-12">
           Amamos lo que usamos
         </h2>
+      </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-          {designItems.map((item) => (
-            <div
-              key={item.id}
-              className="group relative aspect-square bg-unroot-gray-light rounded-lg overflow-hidden"
-            >
-              <div className="w-full h-full relative">
-                <Image
-                  src={item.src}
-                  alt={item.name}
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-300"
-                />
+      {/* Carousel Container */}
+      <div className="relative md:max-w-7xl md:mx-auto md:px-8">
+        {/* Carousel */}
+        <div
+          ref={carouselRef}
+          className="overflow-x-auto scrollbar-hide flex gap-6 md:gap-8 snap-x snap-mandatory scroll-smooth"
+          style={
+            isMobile
+              ? {
+                  paddingLeft: 'calc(50vw - 42.5vw)',
+                  paddingRight: 'calc(50vw - 42.5vw)'
+                }
+              : {}
+          }
+        >
+            {allProducts.map((product) => (
+              <div
+                key={product.id}
+                className="flex-shrink-0 w-[85vw] sm:w-[45vw] md:w-[calc(33.333%-1.5rem)] snap-center"
+              >
+                {/* Image Card */}
+                <div className="relative aspect-square bg-neutral-100 rounded-lg overflow-hidden mb-4">
+                  <OptimizedImage
+                    src={product.thumbnail}
+                    alt={product.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 85vw, (max-width: 768px) 45vw, 33vw"
+                  />
+                </div>
 
-                {/* Overlay with just the buy button */}
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 flex items-center justify-center transition-all duration-300">
+                {/* Product Info */}
+                <div className="space-y-3">
+                  <h3 className="font-sans text-lg font-medium text-black">
+                    {product.name}
+                  </h3>
                   <Link
-                    href={item.link}
-                    className="bg-white text-black px-4 py-2 rounded-md medium text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0"
+                    href={`/lo-que-usamos/${product.slug}`}
+                    className="inline-flex items-center gap-2 text-sm text-black hover:text-black/70 transition-colors group"
                   >
-                    Comprar ahora
+                    Ver más
+                    <svg
+                      className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
                   </Link>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Navigation Arrows */}
+          {canScrollLeft && (
+            <button
+              onClick={() => scroll('left')}
+              className="hidden md:flex absolute left-0 top-[40%] -translate-y-1/2 -translate-x-4 z-10 text-black hover:text-black/70 transition-colors bg-white rounded-full p-2 shadow-lg"
+              aria-label="Anterior"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                strokeWidth={2.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+          )}
+
+          {canScrollRight && (
+            <button
+              onClick={() => scroll('right')}
+              className="hidden md:flex absolute right-0 top-[40%] -translate-y-1/2 translate-x-4 z-10 text-black hover:text-black/70 transition-colors bg-white rounded-full p-2 shadow-lg"
+              aria-label="Siguiente"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                strokeWidth={2.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          )}
+        </div>
+
+      {/* Ver todos button */}
+      <div className="unroot-container">
+        <div className="flex justify-center mt-12">
+          <Link
+            href="/lo-que-usamos"
+            className="bg-black text-white hover:bg-black/90 px-8 py-3 rounded-full text-sm font-medium transition-colors"
+          >
+            Ver todos los productos
+          </Link>
         </div>
       </div>
     </section>

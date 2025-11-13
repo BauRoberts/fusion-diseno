@@ -147,19 +147,14 @@ export default function Header() {
 
           <div className="flex items-center">
             {/* Botón de ecommerce */}
-            <a
-              href="https://fusiondiseño.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mr-2"
-            >
+            <Link href="/lo-que-usamos" className="mr-2">
               <Button
                 variant="outline"
                 className="border-black text-black hover:bg-black/5 rounded-full text-xs px-4 py-1 medium hidden md:inline-flex"
               >
                 compra lo que usamos
               </Button>
-            </a>
+            </Link>
 
             <Link href="/call">
               <Button
@@ -212,15 +207,13 @@ export default function Header() {
             >
               home
             </Link>
-            <a
-              href="https://fusiondiseño.com"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/lo-que-usamos"
               className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               compra lo que usamos
-            </a>
+            </Link>
             <Link
               href="/que-hacemos"
               className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"

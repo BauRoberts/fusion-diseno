@@ -40,6 +40,11 @@ export default function OptimizedImage({
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
 
+  // Si no hay src, retornar null
+  if (!src) {
+    return null;
+  }
+
   // Si no es una URL de Cloudinary, usar la imagen tal cual
   if (!src.includes('cloudinary.com')) {
     return (

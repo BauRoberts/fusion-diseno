@@ -352,14 +352,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <h2 className="text-3xl md:text-4xl font-bold mb-12 font-instrument-serif uppercase tracking-wide">
               Proyectos relacionados
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0">
               {relatedProjects.map((relatedProject: any) => (
                 <Link
                   key={relatedProject.id}
                   href={`/proyecto/${relatedProject.slug}`}
                   className="group"
                 >
-                  <div className="aspect-[4/3] relative overflow-hidden mb-4">
+                  <div className="aspect-[4/3] relative overflow-hidden mb-4 rounded-lg md:rounded-none">
                     <div className="absolute inset-0 ">
                       <OptimizedImage
                         src={relatedProject.images[0]}
@@ -370,10 +370,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       />
                     </div>
                   </div>
-                  <h3 className="text-xl font-medium mb-2">
+                  <h3 className="text-xl font-medium mb-3">
                     {relatedProject.name}
                   </h3>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-6 md:mb-0">
                     {relatedProject.tags.slice(0, 2).map((tag: string) => (
                       <span
                         key={tag}
