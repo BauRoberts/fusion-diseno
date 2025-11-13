@@ -105,13 +105,13 @@ export default function Header() {
           } flex items-center justify-between px-4 lg:px-6 shadow-lg transition-all duration-300`}
         >
           <Link href="/" className="text-black">
-            <div className="w-24 py-2">
+            <div className="w-24 h-auto py-2">
               <Image
                 src="/fusion-negro-2.png"
                 alt="Fusion Logo"
-                width={96}
-                height={30}
-                className="h-auto w-full"
+                width={192}
+                height={192}
+                className="w-full h-auto"
                 priority
               />
             </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Figtree, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import PageLoader from "@/components/page-loader";
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -31,7 +32,7 @@ export default function RootLayout({
       <body
         className={`${figtree.variable} ${ibmPlexMono.variable} font-sans`}
       >
-        {children}
+        <PageLoader>{children}</PageLoader>
       </body>
     </html>
   );

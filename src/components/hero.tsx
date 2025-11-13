@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Hero() {
   return (
     <section className="bg-white pt-24 md:pt-32 pb-4 md:pb-8">
@@ -5,10 +7,13 @@ export default function Hero() {
         {/* Logo - solo visible en desktop */}
         <div className="hidden md:flex flex-col items-center justify-center mb-8">
           <div className="w-38 md:w-48 mb-6">
-            <img
+            <Image
               src="/fusion-negro-2.png"
               alt="Fusion Diseño Logo"
-              className="w-full h-auto"
+              width={192}
+              height={192}
+              style={{ width: '100%', height: 'auto' }}
+              priority
             />
           </div>
         </div>

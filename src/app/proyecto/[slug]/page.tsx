@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import OptimizedImage from "@/components/optimized-image";
 import {
   getProjectBySlug,
   getRelatedProjects,
@@ -55,12 +56,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 : "h-[400px] md:h-[600px]"
             }`}>
               <div className="absolute inset-0 ">
-                <Image
+                <OptimizedImage
                   src={project.images[0]}
                   alt={project.name}
                   fill
                   className="object-cover"
                   priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality="auto:best"
                 />
               </div>
             </div>
@@ -164,11 +167,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     className="relative aspect-[3/4] overflow-hidden"
                   >
                     <div className="absolute inset-0 ">
-                      <Image
+                      <OptimizedImage
                         src={image}
                         alt={`${project.name} - Detalle ${index + 1}`}
                         fill
                         className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        quality="auto:good"
                       />
                     </div>
                   </div>
@@ -198,7 +203,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <div className="flex w-full h-[300px]">
                   <div className="relative w-1/2 h-full overflow-hidden">
                     <div className="absolute inset-0 ">
-                      <Image
+                      <OptimizedImage
                         src={
                           project.images.length > 1
                             ? project.images[1]
@@ -207,12 +212,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         alt={`${project.name} - Detalle 1`}
                         fill
                         className="object-cover"
+                        sizes="25vw"
                       />
                     </div>
                   </div>
                   <div className="relative w-1/2 h-full overflow-hidden">
                     <div className="absolute inset-0 ">
-                      <Image
+                      <OptimizedImage
                         src={
                           project.images.length > 2
                             ? project.images[2]
@@ -221,6 +227,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         alt={`${project.name} - Detalle 2`}
                         fill
                         className="object-cover"
+                        sizes="25vw"
                       />
                     </div>
                   </div>
@@ -229,7 +236,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 {/* Segunda fila con una imagen que ocupa todo el ancho */}
                 <div className="relative w-full h-[280px] mt-0 overflow-hidden">
                   <div className="absolute inset-0 ">
-                    <Image
+                    <OptimizedImage
                       src={
                         project.images.length > 3
                           ? project.images[3]
@@ -238,6 +245,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       alt={`${project.name} - Vista general`}
                       fill
                       className="object-cover"
+                      sizes="50vw"
                     />
                   </div>
                 </div>
@@ -261,11 +269,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     className="relative aspect-[9/16] overflow-hidden"
                   >
                     <div className="absolute inset-0 ">
-                      <Image
+                      <OptimizedImage
                         src={image}
                         alt={`${project.name} - Imagen ${index + 5}`}
                         fill
                         className="object-cover"
+                        sizes="(max-width: 768px) 50vw, 33vw"
                       />
                     </div>
                   </div>
@@ -277,11 +286,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 {project.images.length > 7 && (
                   <div className="relative aspect-[9/16] overflow-hidden">
                     <div className="absolute inset-0 ">
-                      <Image
+                      <OptimizedImage
                         src={project.images[7]}
                         alt={`${project.name} - Imagen 8`}
                         fill
                         className="object-cover"
+                        sizes="33vw"
                       />
                     </div>
                   </div>
@@ -296,11 +306,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     className="relative aspect-[9/16] overflow-hidden"
                   >
                     <div className="absolute inset-0 ">
-                      <Image
+                      <OptimizedImage
                         src={image}
                         alt={`${project.name} - Imagen ${index + 9}`}
                         fill
                         className="object-cover"
+                        sizes="(max-width: 768px) 50vw, 33vw"
                       />
                     </div>
                   </div>
@@ -318,11 +329,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     className="aspect-square relative overflow-hidden"
                   >
                     <div className="absolute inset-0 ">
-                      <Image
+                      <OptimizedImage
                         src={image}
                         alt={`${project.name} - Imagen ${index + 5}`}
                         fill
                         className="object-cover"
+                        sizes="(max-width: 768px) 50vw, 25vw"
                       />
                     </div>
                   </div>
@@ -349,11 +361,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 >
                   <div className="aspect-[4/3] relative overflow-hidden mb-4">
                     <div className="absolute inset-0 ">
-                      <Image
+                      <OptimizedImage
                         src={relatedProject.images[0]}
                         alt={relatedProject.name}
                         fill
                         className="object-cover transition-transform group-hover:scale-105 duration-700"
+                        sizes="(max-width: 768px) 100vw, 33vw"
                       />
                     </div>
                   </div>

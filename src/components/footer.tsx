@@ -94,7 +94,7 @@ export default function Footer() {
                 alt="Fusion Diseño Logo"
                 width={112}
                 height={34}
-                className="h-auto w-full"
+                style={{ width: 'auto', height: 'auto' }}
               />
             </Link>
           </div>

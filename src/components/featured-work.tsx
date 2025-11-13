@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { projects } from "../data/project";
+import OptimizedImage from "./optimized-image";
 
 export default function FeaturedWork() {
   // Track which image is currently shown for each project
@@ -82,7 +82,8 @@ export default function FeaturedWork() {
       <div className="md:hidden relative">
         <div
           id="home-carousel"
-          className="flex overflow-x-auto gap-4 px-4 snap-x snap-mandatory scrollbar-hide"
+          className="flex overflow-x-auto gap-4 snap-x snap-mandatory scrollbar-hide"
+          style={{ paddingLeft: 'calc(50vw - 42.5vw)', paddingRight: 'calc(50vw - 42.5vw)' }}
         >
           {projects.slice(0, 4).map((project) => (
             <Link
@@ -93,11 +94,13 @@ export default function FeaturedWork() {
               <div className="relative h-[70vh] rounded-lg overflow-hidden">
                 {/* Image Background */}
                 <div className="absolute inset-0">
-                  <Image
+                  <OptimizedImage
                     src={project.images[0]}
                     alt={project.name}
                     fill
                     className="object-cover"
+                    sizes="85vw"
+                    quality="auto:good"
                   />
                   {/* Dark overlay for text readability */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
@@ -206,11 +209,14 @@ export default function FeaturedWork() {
                         : "opacity-0"
                     }`}
                   >
-                    <Image
+                    <OptimizedImage
                       src={imageUrl}
                       alt={`${project.name} - Image ${idx + 1}`}
                       fill
                       className="object-cover object-center"
+                      sizes="(max-width: 768px) 100vw, 60vw"
+                      priority={idx === 0}
+                      quality="auto:good"
                     />
                   </div>
                 ))}
