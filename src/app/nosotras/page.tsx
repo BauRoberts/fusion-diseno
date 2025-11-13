@@ -13,7 +13,7 @@ export default function NosotrasPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
               <Image
-                src="/nosotras.png"
+                src="https://res.cloudinary.com/djs4laafl/image/upload/v1763055486/Fotos_Tribeca_Proy-7_bxfrk4.jpg"
                 alt="María y Martina fundadoras de Fusión"
                 fill
                 className="object-cover grayscale "
@@ -93,7 +93,7 @@ export default function NosotrasPage() {
               <div className="flex w-full h-[300px]">
                 <div className="relative w-1/2 h-full">
                   <Image
-                    src="/nosotras-2.png"
+                    src="https://res.cloudinary.com/djs4laafl/image/upload/v1763055486/Fotos_Tribeca_Proy-3_uwjkl4.jpg"
                     alt="Proceso de diseño"
                     fill
                     className="object-cover grayscale"
@@ -102,7 +102,7 @@ export default function NosotrasPage() {
                 </div>
                 <div className="relative w-1/2 h-full">
                   <Image
-                    src="/nosotras-3.png"
+                    src="https://res.cloudinary.com/djs4laafl/image/upload/v1763055486/Fotos_Tribeca_Proy-7_bxfrk4.jpg"
                     alt="Trabajo en equipo"
                     fill
                     className="object-cover grayscale"
@@ -114,7 +114,7 @@ export default function NosotrasPage() {
               {/* Segunda fila con una imagen que ocupa todo el ancho */}
               <div className="relative w-full h-[280px]">
                 <Image
-                  src="/nosotras-4.png"
+                  src="https://res.cloudinary.com/djs4laafl/image/upload/v1763055486/Fotos_Tribeca_Proy-3_uwjkl4.jpg"
                   alt="Nuestro estudio"
                   fill
                   className="object-cover grayscale"

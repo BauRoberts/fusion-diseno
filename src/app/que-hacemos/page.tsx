@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Benefits from "@/components/benefits";
-import Services from "@/components/services";
+import Services, { ExperienceSection } from "@/components/services";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 
@@ -17,8 +17,12 @@ export default function QueHacemosPage() {
       {/* Services Section */}
       <Services />
 
-      {/* Benefits Section */}
+      {/* Benefits Section - "Diseñamos experiencias..." */}
       <Benefits />
+
+      {/* Experience Section - "Nuestra experiencia transformando espacios" moved to the end */}
+      <ExperienceSection />
+
       <Footer />
     </>
   );
