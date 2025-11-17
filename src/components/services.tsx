@@ -4,6 +4,70 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 
+// Mobile Accordion Component
+function MobileServiceAccordion({ service, index }: { service: typeof services[0], index: number }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="mb-3">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full py-5 px-4 flex flex-col items-center justify-center text-center bg-[#B0AE9F] hover:bg-[#A09D8F] transition-colors rounded-sm"
+      >
+        <h3 className="text-lg font-medium text-white mb-2">
+          {service.title}
+        </h3>
+        <svg
+          className={`w-5 h-5 text-white transform transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      {isOpen && (
+        <div className="bg-[#B0AE9F] p-4 pb-6 rounded-b-sm">
+          <ul className="space-y-3 mb-6">
+            {service.features.map((feature, featureIndex) => {
+              const highlightText = service.highlightText;
+              const parts = highlightText
+                ? feature.split(new RegExp(`(${highlightText})`, "gi"))
+                : [feature];
+
+              return (
+                <li
+                  key={`${service.id}-feature-${featureIndex}`}
+                  className="flex items-start text-white text-sm"
+                >
+                  <div className="w-1.5 h-1.5 bg-white rounded-full mr-2.5 mt-2 flex-shrink-0" />
+                  <span>
+                    {parts.map((part, i) =>
+                      highlightText &&
+                      part.toLowerCase() === highlightText.toLowerCase() ? (
+                        <strong key={`${service.id}-strong-${featureIndex}-${i}`}>{part}</strong>
+                      ) : (
+                        <span key={`${service.id}-span-${featureIndex}-${i}`}>{part}</span>
+                      )
+                    )}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+
+          <Link href="/call" className="inline-block w-full">
+            <div className="inline-flex items-center justify-center w-full px-6 py-3 text-sm medium text-white bg-black/60 hover:bg-black/80 transition-colors duration-300 rounded-sm tracking-wider">
+              {service.cta}
+            </div>
+          </Link>
+        </div>
+      )}
+    </div>
+  );
+}
+
 const services = [
   {
     id: "servicio-interiorismo",
@@ -77,8 +141,6 @@ export default function Services() {
   });
   const [isHovering, setIsHovering] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
 
   // Update section dimensions when component mounts or window resizes
   useEffect(() => {
@@ -140,22 +202,6 @@ export default function Services() {
     };
   }, [isMobile]);
 
-  // Handle carousel scroll detection
-  useEffect(() => {
-    const carousel = document.getElementById('services-carousel');
-    if (!carousel || !isMobile) return;
-
-    const checkScroll = () => {
-      const { scrollLeft, scrollWidth, clientWidth } = carousel;
-      setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-    };
-
-    carousel.addEventListener('scroll', checkScroll);
-    checkScroll(); // Initial check
-
-    return () => carousel.removeEventListener('scroll', checkScroll);
-  }, [isMobile]);
 
   // Handle mouse movement for desktop
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
@@ -170,7 +216,7 @@ export default function Services() {
   return (
     <section
       id="servicios"
-      className="pt-32 pb-20 relative" // Añadido padding-top para compensar el header fijo
+      className="pt-32 pb-12 md:pb-16 relative" // Reducido padding-bottom
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
@@ -209,27 +255,18 @@ export default function Services() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div>
-          <div className="mb-10">
-            <span className="inline-block text-sm medium mb-2">
-              NUESTROS SERVICIOS
-            </span>
-            <h2 className="font-sans text-3xl md:text-4xl">
-              Soluciones de diseño personalizadas que{" "}
-              <em className="not-italic">transforman cada espacio</em>
-            </h2>
-          </div>
 
           {/* Desktop: Grid normal */}
           <div className="hidden md:grid grid-cols-3 gap-6">
             {services.map((service) => (
               <div
                 key={service.id}
-                className="col-span-1 rounded-lg p-8 relative overflow-hidden bg-white shadow-lg flex flex-col"
+                className="col-span-1 rounded-lg p-8 relative overflow-hidden shadow-lg flex flex-col"
                 style={{
-                  background: "white",
+                  background: "#B0AE9F",
                 }}
               >
-                <h3 className="text-2xl md:text-3xl mb-8 relative z-10 text-black tracking-wide">
+                <h3 className="text-2xl md:text-3xl mb-8 relative z-10 text-white tracking-wide">
                   {service.title}
                 </h3>
                 <ul className="space-y-4 mb-10 relative z-10 flex-grow">
@@ -242,9 +279,9 @@ export default function Services() {
                     return (
                       <li
                         key={`${service.id}-feature-${index}`}
-                        className="flex items-center text-gray-700"
+                        className="flex items-center text-white"
                       >
-                        <div className="w-1.5 h-1.5 bg-black rounded-full mr-2.5" />
+                        <div className="w-1.5 h-1.5 bg-white rounded-full mr-2.5" />
                         <span>
                           {parts.map((part, i) =>
                             highlightText &&
@@ -261,7 +298,7 @@ export default function Services() {
                 </ul>
 
                 <Link href="/call" className="relative z-10 inline-block mt-auto">
-                  <div className="inline-flex items-center justify-center px-6 py-2.5 text-sm medium text-white bg-black hover:bg-gray-800 transition-colors duration-300 rounded-sm tracking-wider">
+                  <div className="inline-flex items-center justify-center px-6 py-2.5 text-sm medium text-white bg-black/60 hover:bg-black/80 transition-colors duration-300 rounded-sm tracking-wider">
                     {service.cta}
                   </div>
                 </Link>
@@ -269,120 +306,11 @@ export default function Services() {
             ))}
           </div>
 
-          {/* Mobile: Carrusel con scroll horizontal */}
-          <div className="md:hidden relative">
-            <div
-              id="services-carousel"
-              className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide"
-              style={{
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none',
-              }}
-            >
-              {services.map((service) => (
-                <div
-                  key={service.id}
-                  className="flex-shrink-0 w-[85vw] snap-center rounded-lg p-6 relative overflow-hidden bg-white shadow-lg min-h-[450px] flex flex-col"
-                  style={{
-                    background: "white",
-                  }}
-                >
-                  <h3 className="text-xl mb-6 relative z-10 text-black tracking-wide font-medium">
-                    {service.title}
-                  </h3>
-                  <ul className="space-y-3 mb-8 relative z-10 flex-grow">
-                    {service.features.map((feature, index) => {
-                      const highlightText = service.highlightText;
-                      const parts = highlightText
-                        ? feature.split(new RegExp(`(${highlightText})`, "gi"))
-                        : [feature];
-
-                      return (
-                        <li
-                          key={`${service.id}-feature-${index}`}
-                          className="flex items-start text-gray-700 text-sm"
-                        >
-                          <div className="w-1.5 h-1.5 bg-black rounded-full mr-2.5 mt-2 flex-shrink-0" />
-                          <span>
-                            {parts.map((part, i) =>
-                              highlightText &&
-                              part.toLowerCase() === highlightText.toLowerCase() ? (
-                                <strong key={`${service.id}-strong-${index}-${i}`}>{part}</strong>
-                              ) : (
-                                <span key={`${service.id}-span-${index}-${i}`}>{part}</span>
-                              )
-                            )}
-                          </span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-
-                  <Link href="/call" className="relative z-10 inline-block w-full mt-auto">
-                    <div className="inline-flex items-center justify-center w-full px-6 py-3 text-sm medium text-white bg-black hover:bg-gray-800 transition-colors duration-300 rounded-sm tracking-wider">
-                      {service.cta}
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
-
-            {/* Flechas de navegación */}
-            {canScrollLeft && (
-              <button
-                onClick={() => {
-                  const carousel = document.getElementById('services-carousel');
-                  if (carousel) {
-                    const cardWidth = carousel.offsetWidth * 0.85 + 16;
-                    carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-                  }
-                }}
-                className="absolute left-2 top-1/2 -translate-y-1/2 z-20 text-black hover:text-black/70 transition-colors"
-                aria-label="Servicio anterior"
-              >
-                <svg
-                  className="w-8 h-8 drop-shadow-lg"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  strokeWidth={3}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
-              </button>
-            )}
-
-            {canScrollRight && (
-              <button
-                onClick={() => {
-                  const carousel = document.getElementById('services-carousel');
-                  if (carousel) {
-                    const cardWidth = carousel.offsetWidth * 0.85 + 16;
-                    carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
-                  }
-                }}
-                className="absolute right-2 top-1/2 -translate-y-1/2 z-20 text-black hover:text-black/70 transition-colors"
-                aria-label="Siguiente servicio"
-              >
-                <svg
-                  className="w-8 h-8 drop-shadow-lg"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  strokeWidth={3}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </button>
-            )}
+          {/* Mobile: Accordions desplegables */}
+          <div className="md:hidden">
+            {services.map((service, index) => (
+              <MobileServiceAccordion key={service.id} service={service} index={index} />
+            ))}
           </div>
         </div>
       </div>
@@ -392,24 +320,40 @@ export default function Services() {
 
 export function ExperienceSection() {
   return (
-    <section className="py-12 md:py-20 bg-white">
+    <section className="py-8 md:py-12 bg-white">
       <div className="container mx-auto px-4">
-        <div className="bg-gray-50 bg-opacity-90 rounded-lg p-6 md:p-10 relative overflow-hidden">
-          <span className="inline-block text-sm medium mb-4 relative z-10">
+        <div className="rounded-lg p-6 md:p-10 relative overflow-hidden" style={{ background: "#B0AE9F" }}>
+          <span className="inline-block text-sm medium mb-4 relative z-10 text-white">
             Nuestra experiencia transformando espacios
           </span>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl mb-6 relative z-10">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl mb-6 md:mb-8 relative z-10 text-white">
             Desde la conceptualización hasta la materialización, <br className="hidden md:block" />
             nos involucramos en todo el proceso
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-2 mt-6 md:mt-8 relative z-10">
+          {/* Desktop: Grid/lista normal */}
+          <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-2 mt-6 md:mt-8 relative z-10">
             {serviceTypes.map((service) => (
-              <div key={service} className="text-xs md:text-sm text-gray-600 py-1">
+              <div key={service} className="text-xs md:text-sm text-white py-1">
                 {service}
               </div>
             ))}
-            <div className="text-xs md:text-sm text-gray-600 py-1">y más...</div>
+            <div className="text-xs md:text-sm text-white py-1">y más...</div>
+          </div>
+
+          {/* Mobile: Chips como los de proyectos */}
+          <div className="flex md:hidden flex-wrap gap-2 mt-6 relative z-10">
+            {serviceTypes.map((service) => (
+              <span
+                key={service}
+                className="text-white/90 text-xs bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm"
+              >
+                {service}
+              </span>
+            ))}
+            <span className="text-white/90 text-xs bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
+              y más...
+            </span>
           </div>
         </div>
       </div>

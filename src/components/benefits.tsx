@@ -32,7 +32,7 @@ export default function Benefits() {
   return (
     <section
       id="benefits"
-      className="py-24 bg-white relative overflow-hidden"
+      className="py-12 md:py-16 bg-white relative overflow-hidden"
     >
       {/* Imagen de fondo */}
       <div className="absolute inset-0 w-full h-full z-0">
