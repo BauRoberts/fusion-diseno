@@ -33,78 +33,59 @@ export default function ProjectsPage() {
     <main className="bg-white min-h-screen">
       <Header />
       
-      {/* Hero de proyectos - Estilo Nosotras */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24">
-        <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
-              <div className="absolute inset-0 ">
-                <Image
-                  src={projects[0].images[0]}
-                  alt="Proyectos Destacados"
-                  fill
-                  className="object-cover grayscale"
-                  priority
-                />
-              </div>
-            </div>
+      {/* Hero de proyectos - Estilo Home con foto full height */}
+      <section className="relative w-full pt-20 md:pt-0">
+        {/* Desktop: foto a la izquierda con texto superpuesto */}
+        <div className="hidden md:block relative w-full h-screen">
+          <Image
+            src={projects[0].images[0]}
+            alt="Proyectos Destacados"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Overlay gradient para legibilidad */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
 
-            <div className="flex flex-col justify-start">
-              <h1 className="font-instrument-serif text-3xl md:text-4xl uppercase font-medium text-black leading-tight tracking-wide">
+          {/* Texto superpuesto - pegado arriba a la izquierda */}
+          <div className="absolute top-0 left-0 pt-32 pl-8 md:pl-12 lg:pl-16">
+            <div className="max-w-lg">
+              <h1 className="font-instrument-serif text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-tight tracking-wide mb-4">
                 Nuestros Proyectos
               </h1>
-              <p className="font-figtree text-lg text-black/80 leading-relaxed mt-6">
-                Descubrir nuestra colección de proyectos de diseño interior y arquitectura,
+              <p className="font-figtree text-base md:text-lg text-white/90 leading-relaxed">
+                Descubrí nuestra colección de proyectos de diseño interior y arquitectura,
                 donde cada espacio refleja nuestra pasión por el diseño y la funcionalidad.
                 Fusionamos estética y funcionalidad para crear espacios que transmiten
                 emociones e inspiran la vida cotidiana.
               </p>
             </div>
           </div>
-        </Container>
-      </section>
+        </div>
 
-      {/* Tipos de Proyectos - Estilo fondo de plano */}
-      <section className="py-16 bg-neutral-50 relative">
-        {/* Fondo estático de plano arquitectónico */}
-        <div className="absolute inset-0 w-full h-full z-0 opacity-10">
+        {/* Mobile: foto full con texto superpuesto */}
+        <div className="md:hidden relative w-full h-screen">
           <Image
-            src="/bg-planos.svg"
-            alt="Floor Plan Background"
+            src={projects[0].images[0]}
+            alt="Proyectos Destacados"
             fill
             className="object-cover"
             priority
           />
-        </div>
+          {/* Overlay gradient para legibilidad */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent" />
 
-        <Container>
-          <div className="text-center relative z-10 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-instrument-serif uppercase tracking-wide mb-6">
-              Tipos de Proyectos
-            </h2>
-            <p className="font-figtree text-lg text-black/80 leading-relaxed max-w-3xl mx-auto">
-              Trabajamos en una amplia variedad de espacios, desde residenciales hasta comerciales,
-              aplicando nuestro enfoque de diseño personalizado a cada proyecto.
+          {/* Texto superpuesto arriba */}
+          <div className="absolute top-0 left-0 right-0 pt-24 px-6">
+            <h1 className="font-instrument-serif text-3xl font-medium text-white leading-tight tracking-wide mb-4">
+              Nuestros Proyectos
+            </h1>
+            <p className="font-figtree text-base text-white/90 leading-relaxed">
+              Descubrí nuestra colección de proyectos de diseño interior y arquitectura,
+              donde cada espacio refleja nuestra pasión por el diseño y la funcionalidad.
             </p>
           </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-0 relative z-10">
-            {[
-              "Casas y Departamentos",
-              "Oficinas",
-              "Locales Comerciales",
-              "Cafés y Restaurantes",
-              "Remodelaciones",
-              "Proyecto desde Obra",
-              "Mobiliario a Medida",
-              "Branding de Espacios"
-            ].map((categoria) => (
-              <div key={categoria} className="p-4 border-t border-black/10">
-                <span className="text-sm uppercase tracking-wider font-mono">{categoria}</span>
-              </div>
-            ))}
-          </div>
-        </Container>
+        </div>
       </section>
 
       {/* Grid de proyectos - Primera sección, dos proyectos destacados (solo desktop) */}
@@ -208,9 +189,9 @@ export default function ProjectsPage() {
                 <Link
                   key={project.id}
                   href={`/proyecto/${project.slug}`}
-                  className="group relative flex-shrink-0 w-[85vw] snap-center"
+                  className="group relative flex-shrink-0 w-[90vw] snap-center"
                 >
-                  <div className="aspect-square relative overflow-hidden rounded-lg">
+                  <div className="aspect-[4/5] relative overflow-hidden rounded-lg">
                     <div className="absolute inset-0 ">
                       <Image
                         src={project.images[0]}
@@ -233,7 +214,7 @@ export default function ProjectsPage() {
                 onClick={() => {
                   const carousel = document.getElementById('projects-carousel');
                   if (carousel) {
-                    const cardWidth = carousel.offsetWidth * 0.85 + 16;
+                    const cardWidth = carousel.offsetWidth * 0.90 + 16;
                     carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
                   }
                 }}
@@ -261,7 +242,7 @@ export default function ProjectsPage() {
                 onClick={() => {
                   const carousel = document.getElementById('projects-carousel');
                   if (carousel) {
-                    const cardWidth = carousel.offsetWidth * 0.85 + 16;
+                    const cardWidth = carousel.offsetWidth * 0.90 + 16;
                     carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
                   }
                 }}
@@ -294,6 +275,49 @@ export default function ProjectsPage() {
                 </Link>
               </div>
             )}
+          </div>
+        </Container>
+      </section>
+
+      {/* Tipos de Proyectos - Estilo fondo de plano */}
+      <section className="py-16 bg-neutral-50 relative">
+        {/* Fondo estático de plano arquitectónico */}
+        <div className="absolute inset-0 w-full h-full z-0 opacity-10">
+          <Image
+            src="/bg-planos.svg"
+            alt="Floor Plan Background"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+
+        <Container>
+          <div className="text-center relative z-10 mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-instrument-serif uppercase tracking-wide mb-6">
+              Tipos de Proyectos
+            </h2>
+            <p className="font-figtree text-lg text-black/80 leading-relaxed max-w-3xl mx-auto">
+              Trabajamos en una amplia variedad de espacios, desde residenciales hasta comerciales,
+              aplicando nuestro enfoque de diseño personalizado a cada proyecto.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-0 relative z-10">
+            {[
+              "Casas y Departamentos",
+              "Oficinas",
+              "Locales Comerciales",
+              "Cafés y Restaurantes",
+              "Remodelaciones",
+              "Proyecto desde Obra",
+              "Mobiliario a Medida",
+              "Branding de Espacios"
+            ].map((categoria) => (
+              <div key={categoria} className="p-4 border-t border-black/10">
+                <span className="text-sm uppercase tracking-wider font-mono">{categoria}</span>
+              </div>
+            ))}
           </div>
         </Container>
       </section>
