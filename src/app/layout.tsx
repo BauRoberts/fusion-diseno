@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Figtree, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import PageLoader from "@/components/page-loader";
+import FloatingWhatsApp from "@/components/floating-whatsapp";
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
   title: "Fusion Diseño - Transformando espacios con diseño interior exclusivo",
   description: "Transformando espacios con diseño interior exclusivo",
   icons: {
-    icon: "/f.on-negro.png", // This references your file in the public directory
+    icon: "/favicon-negro.png", // This references your file in the public directory
   },
 };
 export default function RootLayout({
@@ -33,6 +34,7 @@ export default function RootLayout({
         className={`${figtree.variable} ${ibmPlexMono.variable} font-sans`}
       >
         <PageLoader>{children}</PageLoader>
+        <FloatingWhatsApp />
       </body>
     </html>
   );

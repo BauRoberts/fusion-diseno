@@ -141,27 +141,108 @@ export default function Header() {
               href="/proyecto"
               className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
             >
-              trabajos
+              proyectos
             </Link>
           </nav>
 
-          <div className="flex items-center">
-            {/* Botón de ecommerce */}
-            <Link href="/lo-que-usamos" className="mr-2">
+          <div className="flex items-center gap-2">
+            {/* Botones Desktop - solo texto */}
+            <Link href="/lo-que-usamos" className="hidden md:inline-flex">
               <Button
                 variant="outline"
-                className="border-black text-black hover:bg-black/5 rounded-full text-xs px-4 py-1 medium hidden md:inline-flex"
+                className="border-black text-black hover:bg-black/5 rounded-full text-xs px-4 py-1 medium"
               >
                 compra lo que usamos
               </Button>
             </Link>
 
-            <Link href="/call">
+            <Link href="/call" className="hidden md:inline-flex">
               <Button
                 variant="secondary"
                 className="bg-black text-white hover:bg-black/90 rounded-full text-xs px-4 py-1 medium"
               >
                 contratanos
+              </Button>
+            </Link>
+
+            {/* Botón productos para móvil - con iconos */}
+            <Link href="/lo-que-usamos" className="md:hidden">
+              <Button
+                variant="outline"
+                className={`border-black text-black hover:bg-black/5 rounded-full text-xs medium transition-all duration-500 ease-in-out ${
+                  scrolled ? "px-4 py-1" : "w-9 h-9 p-0"
+                }`}
+              >
+                <div className="relative flex items-center justify-center">
+                  <span
+                    className={`transition-all duration-500 ease-in-out whitespace-nowrap ${
+                      scrolled
+                        ? "opacity-100 scale-100"
+                        : "opacity-0 scale-0 w-0"
+                    }`}
+                  >
+                    productos
+                  </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={`transition-all duration-500 ease-in-out ${
+                      scrolled
+                        ? "opacity-0 scale-0 absolute"
+                        : "opacity-100 scale-100"
+                    }`}
+                  >
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                    <path d="M3 6h18" />
+                    <path d="M16 10a4 4 0 0 1-8 0" />
+                  </svg>
+                </div>
+              </Button>
+            </Link>
+
+            <Link href="/call" className="md:hidden">
+              <Button
+                variant="secondary"
+                className={`bg-black text-white hover:bg-black/90 rounded-full text-xs medium transition-all duration-500 ease-in-out ${
+                  scrolled ? "px-4 py-1" : "w-9 h-9 p-0"
+                }`}
+              >
+                <div className="relative flex items-center justify-center">
+                  <span
+                    className={`transition-all duration-500 ease-in-out whitespace-nowrap ${
+                      scrolled
+                        ? "opacity-100 scale-100"
+                        : "opacity-0 scale-0 w-0"
+                    }`}
+                  >
+                    contratanos
+                  </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={`transition-all duration-500 ease-in-out ${
+                      scrolled
+                        ? "opacity-0 scale-0 absolute"
+                        : "opacity-100 scale-100"
+                    }`}
+                  >
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                </div>
               </Button>
             </Link>
 
@@ -208,13 +289,6 @@ export default function Header() {
               home
             </Link>
             <Link
-              href="/lo-que-usamos"
-              className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              compra lo que usamos
-            </Link>
-            <Link
               href="/que-hacemos"
               className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
               onClick={() => setMobileMenuOpen(false)}
@@ -226,7 +300,7 @@ export default function Header() {
               className="text-black hover:text-black/80 transition-colors duration-200 text-xs tracking-wide py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
-              trabajos
+              proyectos
             </Link>
             <Link
               href="/nosotras"
