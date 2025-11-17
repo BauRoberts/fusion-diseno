@@ -7,22 +7,24 @@ export default function NosotrasPage() {
   return (
     <main className="bg-white">
       <Header />
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24">
-        <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
-              <Image
-                src="https://res.cloudinary.com/djs4laafl/image/upload/v1763055486/Fotos_Tribeca_Proy-7_bxfrk4.jpg"
-                alt="María y Martina fundadoras de Fusión"
-                fill
-                className="object-cover grayscale "
-                priority
-              />
-            </div>
+      {/* Hero Section - Foto principal full screen */}
+      <section className="w-full">
+        {/* Imagen que ocupa toda la pantalla */}
+        <div className="relative w-full h-screen">
+          <Image
+            src="https://res.cloudinary.com/djs4laafl/image/upload/v1763414173/Foto_portada_ot5bn2.jpg"
+            alt="María y Martina fundadoras de Fusión"
+            fill
+            className="object-cover grayscale object-[10%_center] md:object-center"
+            priority
+          />
+        </div>
 
-            <div className="flex flex-col justify-start">
-              <p className="font-instrument-serif text-2xl md:text-3xl font-medium text-black leading-tight tracking-wide">
+        {/* Texto en itálica debajo de la imagen - centrado */}
+        <div className="bg-white py-12 md:py-16">
+          <Container>
+            <div className="max-w-5xl mx-auto text-center">
+              <p className="font-instrument-serif italic text-lg md:text-xl lg:text-2xl text-black leading-relaxed tracking-wide">
                 Somos María y Martina, primas hermanas y socias en este proyecto
                 que nació en una charla de café. En abril del 2024 nos juntamos
                 para diseñar espacios que transformen. Así nació{" "}
@@ -30,8 +32,8 @@ export default function NosotrasPage() {
                   <Image
                     src="/fusion-negro-2.png"
                     alt="Fusión"
-                    width={140}
-                    height={80}
+                    width={120}
+                    height={60}
                     className="inline-block h-[1em] w-auto mx-1 transform translate-y-[0.1em]"
                   />
                 </span>
@@ -40,14 +42,16 @@ export default function NosotrasPage() {
                 estética e innovación.
               </p>
             </div>
-          </div>
-        </Container>
+          </Container>
+        </div>
       </section>
 
       {/* Historia y Valores */}
       <section className="py-16 bg-neutral-50">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* Layout para Desktop: Grid de 2 columnas */}
+          <div className="hidden md:grid md:grid-cols-2 gap-12">
+            {/* Columna izquierda: Textos */}
             <div className="space-y-6">
               <div className="space-y-4">
                 <p className="font-figtree text-lg text-black/80 leading-relaxed">
@@ -88,12 +92,15 @@ export default function NosotrasPage() {
                 </p>
               </div>
             </div>
+
+            {/* Columna derecha: Grupo de fotos para Desktop */}
             <div className="flex flex-col w-full">
+              {/* TODO: Reemplazar con tus nuevas fotos */}
               {/* Primera fila con dos imágenes juntas */}
               <div className="flex w-full h-[300px]">
                 <div className="relative w-1/2 h-full">
                   <Image
-                    src="https://res.cloudinary.com/djs4laafl/image/upload/v1763055486/Fotos_Tribeca_Proy-3_uwjkl4.jpg"
+                    src="https://res.cloudinary.com/djs4laafl/image/upload/v1763414167/Martu_sola_cuadricula_zen2nb.jpg"
                     alt="Proceso de diseño"
                     fill
                     className="object-cover grayscale"
@@ -102,7 +109,7 @@ export default function NosotrasPage() {
                 </div>
                 <div className="relative w-1/2 h-full">
                   <Image
-                    src="https://res.cloudinary.com/djs4laafl/image/upload/v1763055486/Fotos_Tribeca_Proy-7_bxfrk4.jpg"
+                    src="https://res.cloudinary.com/djs4laafl/image/upload/v1763414167/Maria_sola_cuadricula_n0eucv.jpg"
                     alt="Trabajo en equipo"
                     fill
                     className="object-cover grayscale"
@@ -114,12 +121,88 @@ export default function NosotrasPage() {
               {/* Segunda fila con una imagen que ocupa todo el ancho */}
               <div className="relative w-full h-[280px]">
                 <Image
-                  src="https://res.cloudinary.com/djs4laafl/image/upload/v1763055486/Fotos_Tribeca_Proy-3_uwjkl4.jpg"
+                  src="https://res.cloudinary.com/djs4laafl/image/upload/v1763414167/Cuadricula_abajo_horiz_fcjtb6.jpg"
                   alt="Nuestro estudio"
                   fill
                   className="object-cover grayscale"
                 />
               </div>
+            </div>
+          </div>
+
+          {/* Layout para Mobile: Orden específico */}
+          <div className="md:hidden space-y-8">
+            {/* 1. Grupo de fotos PRIMERO en mobile */}
+            <div className="flex flex-col w-full">
+              {/* Primera fila con dos imágenes juntas */}
+              <div className="flex w-full h-[250px]">
+                <div className="relative w-1/2 h-full">
+                  <Image
+                    src="https://res.cloudinary.com/djs4laafl/image/upload/v1763414167/Martu_sola_cuadricula_zen2nb.jpg"
+                    alt="Proceso de diseño"
+                    fill
+                    className="object-cover grayscale"
+                  />
+                </div>
+                <div className="relative w-1/2 h-full">
+                  <Image
+                    src="https://res.cloudinary.com/djs4laafl/image/upload/v1763414167/Maria_sola_cuadricula_n0eucv.jpg"
+                    alt="Trabajo en equipo"
+                    fill
+                    className="object-cover grayscale"
+                  />
+                </div>
+              </div>
+
+              {/* Segunda fila con una imagen que ocupa todo el ancho */}
+              <div className="relative w-full h-[220px]">
+                <Image
+                  src="https://res.cloudinary.com/djs4laafl/image/upload/v1763414167/Cuadricula_abajo_horiz_fcjtb6.jpg"
+                  alt="Nuestro estudio"
+                  fill
+                  className="object-cover grayscale"
+                />
+              </div>
+            </div>
+
+            {/* 2. Texto largo DESPUÉS en mobile */}
+            <div className="space-y-4">
+              <p className="font-figtree text-base text-black/80 leading-relaxed">
+                Lo que nos distingue es la pasión con la que trabajamos. Nos
+                motiva cada proyecto, le dedicamos el tiempo a detenernos en
+                cada detalle y buscamos siempre la mejor solución para cada
+                caso. El cliente es el centro de nuestro trabajo, por lo que nos
+                adaptamos a sus necesidades, estilo y presupuesto. En{" "}
+                <span className="inline-flex items-center relative">
+                  <Image
+                    src="/fusion-negro-2.png"
+                    alt="Fusión"
+                    width={100}
+                    height={60}
+                    className="inline-block h-[1em] w-auto mx-1 transform translate-y-[0.1em]"
+                  />
+                </span>
+                , ofrecemos un proceso y una experiencia cercana, clara y
+                pensada para que nuestro cliente disfrute.
+              </p>
+              <p className="font-figtree text-base text-black/80 leading-relaxed">
+                Nos encanta cada etapa del proceso: desde la conceptualización
+                hasta la fabricación del mobiliario. Le dedicamos toda la
+                energía y el compromiso a nuestro trabajo porque nos apasiona lo
+                que hacemos, y creemos que ese es el mejor valor que podemos
+                aportar.
+              </p>
+              <p className="font-figtree text-base text-black/80 leading-relaxed">
+                No sólo proyectamos, sino que también contamos con talleres para
+                la fabricación de mobiliario a medida, lo que nos permite dar
+                respuestas rápidas y eficientes y personalización en cada
+                diseño. Nos involucramos en todo el proceso, desde la idea hasta
+                la materialización pasando por las etapas de: proyecto donde se
+                llevan a cabo el relevamiento, anteproyecto, selección de
+                materiales y mobiliario, planos y renders; y ejecución donde se
+                da lugar a la coordinación con proveedores, administración de
+                obra, supervisión y entrega final.
+              </p>
             </div>
           </div>
         </Container>
