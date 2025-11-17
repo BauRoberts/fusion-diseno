@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-screen min-h-[600px] overflow-hidden">
+    <section className="relative w-full h-screen min-h-[600px] overflow-hidden mb-16 md:mb-24">
       {/* Background Image - Desktop */}
       <div className="hidden md:block absolute inset-0">
         <Image
@@ -14,6 +14,8 @@ export default function Hero() {
           quality={100}
         />
         <div className="absolute inset-0 bg-black/20" />
+        {/* Gradiente blanco en la parte inferior */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white via-white/60 to-transparent" />
       </div>
 
       {/* Background Image - Mobile */}
@@ -27,6 +29,8 @@ export default function Hero() {
           quality={100}
         />
         <div className="absolute inset-0 bg-black/30" />
+        {/* Gradiente blanco en la parte inferior */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white via-white/60 to-transparent" />
       </div>
 
       {/* Content - Desktop */}

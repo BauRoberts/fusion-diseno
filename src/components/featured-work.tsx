@@ -78,6 +78,13 @@ export default function FeaturedWork() {
 
   return (
     <section id="featured-work" className="bg-white pb-8 md:pb-0">
+      {/* Título de la sección */}
+      <div className="max-w-7xl mx-auto mb-8 md:mb-12 md:px-8" style={{ paddingLeft: 'calc(50vw - 42.5vw)', paddingRight: 'calc(50vw - 42.5vw)' }}>
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans extrabold text-black">
+          nuestros proyectos
+        </h2>
+      </div>
+
       {/* Mobile: Horizontal Scroll con flechas */}
       <div className="md:hidden relative">
         <div
