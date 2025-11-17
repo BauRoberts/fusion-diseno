@@ -27,7 +27,7 @@ export default function FeaturedWork() {
 
   // Check scroll position for mobile carousel
   useEffect(() => {
-    const carousel = document.getElementById('home-carousel');
+    const carousel = document.getElementById("home-carousel");
     if (!carousel) return;
 
     const checkScroll = () => {
@@ -36,10 +36,10 @@ export default function FeaturedWork() {
       setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
     };
 
-    carousel.addEventListener('scroll', checkScroll);
+    carousel.addEventListener("scroll", checkScroll);
     checkScroll(); // Initial check
 
-    return () => carousel.removeEventListener('scroll', checkScroll);
+    return () => carousel.removeEventListener("scroll", checkScroll);
   }, []);
 
   // Handle mouse enter to change image
@@ -79,10 +79,18 @@ export default function FeaturedWork() {
   return (
     <section id="featured-work" className="bg-white pb-8 md:pb-0">
       {/* Título de la sección */}
-      <div className="max-w-7xl mx-auto mb-8 md:mb-12 md:px-8" style={{ paddingLeft: 'calc(50vw - 42.5vw)', paddingRight: 'calc(50vw - 42.5vw)' }}>
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans extrabold text-black">
-          nuestros proyectos
-        </h2>
+      <div className="mb-8 md:mb-12">
+        <div
+          className="md:max-w-7xl md:mx-auto md:px-8"
+          style={{
+            paddingLeft: "calc(50vw - 42.5vw)",
+            paddingRight: "calc(50vw - 42.5vw)",
+          }}
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans extrabold text-black">
+            Proyectos
+          </h2>
+        </div>
       </div>
 
       {/* Mobile: Horizontal Scroll con flechas */}
@@ -90,7 +98,10 @@ export default function FeaturedWork() {
         <div
           id="home-carousel"
           className="flex overflow-x-auto gap-4 snap-x snap-mandatory scrollbar-hide"
-          style={{ paddingLeft: 'calc(50vw - 42.5vw)', paddingRight: 'calc(50vw - 42.5vw)' }}
+          style={{
+            paddingLeft: "calc(50vw - 42.5vw)",
+            paddingRight: "calc(50vw - 42.5vw)",
+          }}
         >
           {projects.slice(0, 4).map((project) => (
             <Link
@@ -115,9 +126,7 @@ export default function FeaturedWork() {
 
                 {/* Project Info */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <h3 className="text-3xl font-sans mb-3">
-                    {project.name}
-                  </h3>
+                  <h3 className="text-3xl font-sans mb-3">{project.name}</h3>
                   <div className="flex flex-wrap gap-2 mb-3">
                     {project.tags.slice(0, 2).map((tag) => (
                       <span
@@ -128,9 +137,7 @@ export default function FeaturedWork() {
                       </span>
                     ))}
                   </div>
-                  <span className="text-white/90 text-sm">
-                    ver proyecto →
-                  </span>
+                  <span className="text-white/90 text-sm">ver proyecto →</span>
                 </div>
               </div>
             </Link>
@@ -141,10 +148,10 @@ export default function FeaturedWork() {
         {canScrollLeft && (
           <button
             onClick={() => {
-              const carousel = document.getElementById('home-carousel');
+              const carousel = document.getElementById("home-carousel");
               if (carousel) {
                 const cardWidth = carousel.offsetWidth * 0.85 + 16;
-                carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+                carousel.scrollBy({ left: -cardWidth, behavior: "smooth" });
               }
             }}
             className="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-white hover:text-white/70 transition-colors"
@@ -169,10 +176,10 @@ export default function FeaturedWork() {
         {canScrollRight && (
           <button
             onClick={() => {
-              const carousel = document.getElementById('home-carousel');
+              const carousel = document.getElementById("home-carousel");
               if (carousel) {
                 const cardWidth = carousel.offsetWidth * 0.85 + 16;
-                carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                carousel.scrollBy({ left: cardWidth, behavior: "smooth" });
               }
             }}
             className="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-white hover:text-white/70 transition-colors"

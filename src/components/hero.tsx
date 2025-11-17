@@ -14,8 +14,6 @@ export default function Hero() {
           quality={100}
         />
         <div className="absolute inset-0 bg-black/20" />
-        {/* Gradiente blanco en la parte inferior */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white via-white/60 to-transparent" />
       </div>
 
       {/* Background Image - Mobile */}
@@ -29,8 +27,6 @@ export default function Hero() {
           quality={100}
         />
         <div className="absolute inset-0 bg-black/30" />
-        {/* Gradiente blanco en la parte inferior */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white via-white/60 to-transparent" />
       </div>
 
       {/* Content - Desktop */}
