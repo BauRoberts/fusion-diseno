@@ -27,6 +27,7 @@ export interface Product {
   id: number;
   slug: string;
   name: string;
+  category: "sillones" | "otros-productos"; // Categoría del producto
   images: string[]; // Imágenes del producto
   imageAspects?: ("horizontal" | "square" | "vertical")[]; // Aspect ratio de cada imagen para mobile
   dimensionesImage?: string; // Imagen de dimensiones para mostrar en la sección de detalles
@@ -126,6 +127,7 @@ export const products: Product[] = [
     id: 1,
     slug: "sillon-canela",
     name: "Sillón Canela",
+    category: "sillones",
     thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Canela__r3kxop.jpg",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Canela__r3kxop.jpg",
@@ -184,6 +186,7 @@ export const products: Product[] = [
     id: 2,
     slug: "sillon-habano",
     name: "Sillón Habano",
+    category: "sillones",
     thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763071815/Habano__vebgdv.jpg",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763071815/Habano__vebgdv.jpg",
@@ -233,6 +236,7 @@ export const products: Product[] = [
     id: 3,
     slug: "sillon-espresso",
     name: "Sillón Espresso",
+    category: "sillones",
     thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Espresso_4_em3xfx.png",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Espresso_4_em3xfx.png",
@@ -287,6 +291,7 @@ export const products: Product[] = [
     id: 4,
     slug: "sillon-humo",
     name: "Sillón Humo",
+    category: "sillones",
     thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Humo_1_etj7dp.png",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Humo_1_etj7dp.png",
@@ -346,6 +351,7 @@ export const products: Product[] = [
     id: 5,
     slug: "sillon-malta",
     name: "Sillón Malta",
+    category: "sillones",
     thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Malta_2_pvgsnd.png",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Malta_2_pvgsnd.png",
@@ -403,6 +409,7 @@ export const products: Product[] = [
     id: 6,
     slug: "sillon-tabaco",
     name: "Sillón Tabaco",
+    category: "sillones",
     thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Tabaco__impimq.jpg",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Tabaco__impimq.jpg",
@@ -453,6 +460,7 @@ export const products: Product[] = [
     id: 7,
     slug: "sillon-tao",
     name: "Sillón Tao",
+    category: "sillones",
     thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Tao_avijeu.jpg",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Tao_avijeu.jpg",
@@ -528,4 +536,9 @@ export function getTelasDisponibles(): TelaOption[] {
 // Función para obtener las orientaciones comunes
 export function getOrientacionesComunes(): OrientacionOption[] {
   return orientacionesComunes;
+}
+
+// Función para obtener productos por categoría
+export function getProductsByCategory(category: "sillones" | "otros-productos"): Product[] {
+  return products.filter((product) => product.category === category);
 }
