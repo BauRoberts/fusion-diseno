@@ -161,7 +161,8 @@ export default function ProjectPageClient({ project, relatedProjects }: { projec
 
       {/* Galería de imágenes - Patrón 2-1-2-1 */}
       <section className="w-full">
-        <div className="w-full">
+        {/* Desktop: Patrón 2-1-2-1 con h-screen */}
+        <div className="hidden md:block w-full">
           {project.images.slice(1).map((image: string, index: number) => {
             const position = index % 3; // Patrón de 3: 0,1 (par) | 2 (full) | repetir
 
@@ -227,6 +228,26 @@ export default function ProjectPageClient({ project, relatedProjects }: { projec
               );
             }
           })}
+        </div>
+
+        {/* Mobile: Grid simple con aspect ratio */}
+        <div className="md:hidden w-full">
+          {project.images.slice(1).map((image: string, index: number) => (
+            <div
+              key={`mobile-${index}`}
+              className="relative w-full aspect-[4/5] cursor-pointer"
+              onClick={() => openLightbox(index + 1)}
+            >
+              <OptimizedImage
+                src={image}
+                alt={`${project.name} - Imagen ${index + 2}`}
+                fill
+                className="object-cover"
+                sizes="100vw"
+                quality="auto:good"
+              />
+            </div>
+          ))}
         </div>
       </section>
 
