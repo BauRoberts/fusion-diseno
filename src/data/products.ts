@@ -128,7 +128,7 @@ export const products: Product[] = [
     slug: "sillon-canela",
     name: "Sillón Canela",
     category: "sillones",
-    thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Canela__r3kxop.jpg",
+    thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763478900/Canela_Portada_cbzxzc.png",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Canela__r3kxop.jpg",
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Canela_3__mztega.jpg",
@@ -187,7 +187,7 @@ export const products: Product[] = [
     slug: "sillon-habano",
     name: "Sillón Habano",
     category: "sillones",
-    thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763071815/Habano__vebgdv.jpg",
+    thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763478903/Habano_Portada_tvdrgn.png",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763071815/Habano__vebgdv.jpg",
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763071812/Habano_1__l5tmav.jpg",
@@ -237,7 +237,7 @@ export const products: Product[] = [
     slug: "sillon-espresso",
     name: "Sillón Espresso",
     category: "sillones",
-    thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Espresso_4_em3xfx.png",
+    thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763478901/Espresso_Portada_blt28d.png",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Espresso_4_em3xfx.png",
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Espresso_1_d1q1bg.png",
@@ -292,7 +292,7 @@ export const products: Product[] = [
     slug: "sillon-humo",
     name: "Sillón Humo",
     category: "sillones",
-    thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Humo_1_etj7dp.png",
+    thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763478902/Humo_Portada_eybgef.png",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Humo_1_etj7dp.png",
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065092/Humo_4__ofjzo8.jpg",
@@ -352,7 +352,7 @@ export const products: Product[] = [
     slug: "sillon-malta",
     name: "Sillón Malta",
     category: "sillones",
-    thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Malta_2_pvgsnd.png",
+    thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763478905/Malta_Portada_ijruw2.png",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Malta_2_pvgsnd.png",
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065092/Malta_o5jfsp.jpg",
@@ -410,7 +410,7 @@ export const products: Product[] = [
     slug: "sillon-tabaco",
     name: "Sillón Tabaco",
     category: "sillones",
-    thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Tabaco__impimq.jpg",
+    thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763478900/Tabaco_Portada_gkpceh.png",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Tabaco__impimq.jpg",
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065092/Tabaco_5__j4tpzw.jpg",
@@ -461,7 +461,7 @@ export const products: Product[] = [
     slug: "sillon-tao",
     name: "Sillón Tao",
     category: "sillones",
-    thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Tao_avijeu.jpg",
+    thumbnail: "https://res.cloudinary.com/djs4laafl/image/upload/v1763478908/Tao_Portada_he774d.png",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065093/Tao_avijeu.jpg",
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763065092/Tao_4__wqiqrd.jpg",
