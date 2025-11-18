@@ -7,6 +7,7 @@ export interface Project {
   tags: string[];
   link: string;
   description: string;
+  type?: string; // Tipo de proyecto: "Residencial", "Comercial", etc.
   imageOrientation?: "horizontal" | "vertical"; // Orientación de las imágenes del proyecto
   details: {
     client?: string;
@@ -31,6 +32,7 @@ export const projects: Project[] = [
     id: 1,
     slug: "terron-340",
     name: "Terrón_340",
+    type: "Residencial",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763045973/Fusion_Terron_Fachada_b6ag2t.jpg",
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763045972/Fusion_Terron_Galeria_uq0kmv.jpg",
@@ -90,6 +92,7 @@ export const projects: Project[] = [
     id: 2,
     slug: "dlk-88",
     name: "DLK_88",
+    type: "Comercial",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763045858/Fotos_DLK_Proy-10_f0biow.jpg",
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763045844/Fotos_DLK_Proy-1_qrc4ko.jpg",
@@ -144,6 +147,7 @@ export const projects: Project[] = [
     id: 3,
     slug: "tribeca-84",
     name: "Tribeca_84",
+    type: "Residencial",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763045805/Final_Quincho_Tribeca_xzfpqb.jpg",
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763045749/Fotos_Tribeca_Proy-5_vfmpyu.jpg",
@@ -184,6 +188,7 @@ export const projects: Project[] = [
     id: 4,
     slug: "suite-41",
     name: "Suite_41",
+    type: "Residencial",
     images: [
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763045908/Fotos_Fer_Proy-11_pfzqbb.jpg",
       "https://res.cloudinary.com/djs4laafl/image/upload/v1763045909/Fotos_Fer_Proy-13_wwevqp.jpg",
