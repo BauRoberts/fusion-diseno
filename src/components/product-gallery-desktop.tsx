@@ -5,9 +5,10 @@ import OptimizedImage from "./optimized-image";
 interface ProductGalleryDesktopProps {
   images: string[];
   productName: string;
+  onImageClick?: (index: number) => void;
 }
 
-export default function ProductGalleryDesktop({ images, productName }: ProductGalleryDesktopProps) {
+export default function ProductGalleryDesktop({ images, productName, onImageClick }: ProductGalleryDesktopProps) {
   // Estructura de galería tipo proyectos
   // Imagen 1: Grande principal
   // Imágenes 2-3: Grid flexible
@@ -16,7 +17,10 @@ export default function ProductGalleryDesktop({ images, productName }: ProductGa
     <div className="space-y-0">
       {/* Primera imagen: Principal horizontal */}
       {images[0] && (
-        <div className="relative w-full aspect-[16/10] overflow-hidden">
+        <div
+          className="relative w-full aspect-[16/10] overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+          onClick={() => onImageClick?.(0)}
+        >
           <OptimizedImage
             src={images[0]}
             alt={`${productName} - Vista principal`}
@@ -34,7 +38,10 @@ export default function ProductGalleryDesktop({ images, productName }: ProductGa
         <div className="grid grid-cols-2 gap-0">
           {/* Segunda imagen - cuadrada */}
           {images[1] && (
-            <div className="relative aspect-square overflow-hidden">
+            <div
+              className="relative aspect-square overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => onImageClick?.(1)}
+            >
               <OptimizedImage
                 src={images[1]}
                 alt={`${productName} - Detalle 1`}
@@ -48,7 +55,10 @@ export default function ProductGalleryDesktop({ images, productName }: ProductGa
 
           {/* Tercera imagen - cuadrada */}
           {images[2] && (
-            <div className="relative aspect-square overflow-hidden">
+            <div
+              className="relative aspect-square overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => onImageClick?.(2)}
+            >
               <OptimizedImage
                 src={images[2]}
                 alt={`${productName} - Detalle 2`}

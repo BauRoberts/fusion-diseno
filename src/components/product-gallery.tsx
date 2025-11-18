@@ -7,6 +7,7 @@ interface ProductGalleryProps {
   images: string[];
   productName: string;
   imageAspects?: ("horizontal" | "square" | "vertical")[];
+  onImageClick?: (index: number) => void;
 }
 
 // Mapeo de aspect ratios
@@ -16,7 +17,7 @@ const aspectRatioMap = {
   vertical: "aspect-[3/4]"
 };
 
-export default function ProductGallery({ images, productName, imageAspects }: ProductGalleryProps) {
+export default function ProductGallery({ images, productName, imageAspects, onImageClick }: ProductGalleryProps) {
   const [selectedSlide, setSelectedSlide] = useState(0);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -100,7 +101,8 @@ export default function ProductGallery({ images, productName, imageAspects }: Pr
                   {slide.images.map((imageIndex) => (
                     <div
                       key={imageIndex}
-                      className="relative w-full aspect-[2/1] overflow-hidden rounded-lg"
+                      className="relative w-full aspect-[2/1] overflow-hidden rounded-lg cursor-pointer"
+                      onClick={() => onImageClick?.(imageIndex)}
                     >
                       <OptimizedImage
                         src={images[imageIndex]}
@@ -123,7 +125,8 @@ export default function ProductGallery({ images, productName, imageAspects }: Pr
                       : imageAspects?.[slide.images[0]] === "vertical"
                       ? "aspect-[3/4]"
                       : "aspect-[16/10]"
-                  } overflow-hidden rounded-lg`}
+                  } overflow-hidden rounded-lg cursor-pointer`}
+                  onClick={() => onImageClick?.(slide.images[0])}
                 >
                   <OptimizedImage
                     src={images[slide.images[0]]}
