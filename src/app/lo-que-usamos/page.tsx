@@ -11,16 +11,29 @@ export default function LoQueUsamosPage() {
 
       {/* Hero Section - Imagen de portada con texto */}
       <section className="relative w-full h-screen">
+        {/* Imagen Desktop */}
         <Image
           src="https://res.cloudinary.com/djs4laafl/image/upload/v1763072083/Tabaco__impimq.jpg"
           alt="Muebles Fusión"
           fill
-          className="object-cover"
+          className="hidden md:block object-cover"
           priority
         />
 
-        {/* Texto arriba centrado */}
-        <div className="absolute top-32 left-0 right-0 md:top-40">
+        {/* Imagen Mobile */}
+        <div className="md:hidden absolute inset-0">
+          <Image
+            src="https://res.cloudinary.com/djs4laafl/image/upload/v1763072006/Malta_o5jfsp.jpg"
+            alt="Muebles Fusión"
+            fill
+            className="object-cover"
+            style={{ objectPosition: "center 20%" }}
+            priority
+          />
+        </div>
+
+        {/* Texto Desktop - arriba centrado en negro */}
+        <div className="hidden md:block absolute top-32 left-0 right-0 md:top-40">
           <Container>
             <div className="max-w-5xl mx-auto text-center">
               <p className="font-instrument-serif italic text-lg md:text-xl lg:text-2xl text-black leading-relaxed tracking-wide">
@@ -28,6 +41,18 @@ export default function LoQueUsamosPage() {
                 equilibrio entre estética, funcionalidad y confort. Todos
                 nuestros muebles son hechos por encargo, personalizados según
                 tus necesidades y el carácter de tu espacio.
+              </p>
+            </div>
+          </Container>
+        </div>
+
+        {/* Texto Mobile - abajo a la izquierda en blanco */}
+        <div className="md:hidden absolute bottom-8 left-0 right-0">
+          <Container>
+            <div>
+              <p className="font-instrument-serif italic text-base text-white leading-relaxed tracking-wide">
+                Diseñamos y fabricamos muebles que equilibran estética,
+                funcionalidad y confort, personalizados para tu espacio.
               </p>
             </div>
           </Container>
@@ -50,9 +75,16 @@ export default function LoQueUsamosPage() {
                 className="object-cover transition-all duration-700 group-hover:scale-105"
               />
 
-              {/* Overlay con título - aparece en hover */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-500 flex items-center justify-center">
+              {/* Overlay Desktop - aparece en hover */}
+              <div className="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-500 items-center justify-center">
                 <h2 className="font-instrument-serif text-5xl md:text-7xl uppercase font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 tracking-wide">
+                  Sillones
+                </h2>
+              </div>
+
+              {/* Overlay Mobile - siempre visible */}
+              <div className="md:hidden absolute inset-0 bg-black/30 flex items-center justify-center">
+                <h2 className="font-instrument-serif text-4xl uppercase font-medium text-white tracking-wide">
                   Sillones
                 </h2>
               </div>
@@ -70,9 +102,18 @@ export default function LoQueUsamosPage() {
                 className="object-cover transition-all duration-700 group-hover:scale-105"
               />
 
-              {/* Overlay con título - aparece en hover */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-500 flex items-center justify-center">
+              {/* Overlay Desktop - aparece en hover */}
+              <div className="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-500 items-center justify-center">
                 <h2 className="font-instrument-serif text-5xl md:text-7xl uppercase font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 tracking-wide text-center">
+                  Otros
+                  <br />
+                  Productos
+                </h2>
+              </div>
+
+              {/* Overlay Mobile - siempre visible */}
+              <div className="md:hidden absolute inset-0 bg-black/30 flex items-center justify-center">
+                <h2 className="font-instrument-serif text-4xl uppercase font-medium text-white tracking-wide text-center">
                   Otros
                   <br />
                   Productos
